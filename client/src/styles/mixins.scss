@@ -1,0 +1,47 @@
+@import './fontface.scss';
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+list-style-type: none;
+text-decoration: none;
+
+}
+
+body{
+    font-size: 16px;
+    background-color: #02050E;
+    box-sizing: border-box;
+    font-family:sans-serif;
+    color: #FFFFFF;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+@mixin container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 120px;
+}
+
+@mixin ornament {
+    width: 638px;
+    height: 587px;
+    border-radius: 50%;
+    background: rgba(30, 80, 255, 0.5);
+    filter: blur(300px);
+}
