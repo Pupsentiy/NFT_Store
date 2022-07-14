@@ -1,0 +1,52 @@
+@import '../../../styles/mixins.scss';
+
+.hotNFTs{
+    margin-top: 160px;
+    .container{
+        @include container;
+        .hotNFTs__header{
+            display: flex;
+            justify-content: center;
+            .hotNFTs__title{
+                font-weight: 700;
+                font-size: 48px;
+                line-height: 63px;
+                color: #ffffff;
+            }
+        }
+
+        .hotNFTs__wrapper-nav{
+            margin-top: 56px;
+            display: flex;
+            justify-content: space-evenly;
+            .hotNFTs__btn-nav{
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500 ;
+                line-height: 24px;
+                background: #1E50FF1A;
+                width: 119px;
+                height: 56px;
+                border-radius: 8px;
+                border:none;
+                &:last-child{
+                    margin:0px;
+                }
+                &:active{
+                    font-size: 16px;
+                color: #ffffff;
+                font-weight: 500 ;
+                line-height: 24px;
+                background: #1E50FF;
+                width: 119px;
+                height: 56px;
+                border-radius: 8px;
+                border:none;
+                filter: drop-shadow(10px 10px 10px rgba(30, 80, 255, 0.5));
+                }
+            }
+        }    
+    }
+
+    
+}

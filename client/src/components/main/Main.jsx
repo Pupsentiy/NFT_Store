@@ -1,7 +1,8 @@
 import React from 'react'
 import CreateNft from './createNft/CreateNft'
 import Discover from './discover/Discover'
-import LiveAuctios from './liveAuctios/LiveAuctios'
+import HotNFTs from './hotNfts/HotNFTs'
+import LiveAuctions from './liveAuctions/LiveAuctions'
 
 const Container = () => {
 
@@ -31,7 +32,8 @@ const Container = () => {
     <>
     <Discover/>
     <CreateNft/>
-    <LiveAuctios/>
+    <LiveAuctions/>
+    <HotNFTs/>
     </>
   )
 }
