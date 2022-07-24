@@ -11,9 +11,7 @@
       display: flex;
       align-items: center;
       .logo__text {
-        font-weight: 600;
-        line-height: 32px;
-        margin-left: 10px;
+       @include text-logo;
       }
     }
 
@@ -23,10 +21,8 @@
         .menu__item {
           margin-left: 32px;
           .item-link {
-            font-weight: 600;
-            line-height: 32px;
-            color: #ffffff;
             cursor: pointer;
+            
           }
         }
       }

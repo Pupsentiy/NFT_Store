@@ -1,14 +1,15 @@
 @import './fontface.scss';
 
-body,
+
+
+body{height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 h1,
-h2,
-h3,
 h4,
-h5,
-h6,
 p,
-a,
 ul[class],
 ol[class],
 li,
@@ -20,9 +21,49 @@ dd {
     margin: 0;
     padding: 0;
 list-style-type: none;
-text-decoration: none;
+}
+
+H2{
+font-size: 64px;
+font-weight: 700;
+line-height: 83%;
+margin: 0px;
+}
+
+H3{
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 89%;
+    margin: 0px;
+}
+H5{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0px;
+    margin-bottom: 24px;
+}
+H6{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    margin: 0px;
+}
+p{
+    color: #ADB9C7;
+    font-size:14px;
+    line-height: 32px;
+    font-weight: 400;
+}
+a{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 133%;
+    text-decoration: none;
+    color: #8F9CA9;
 
 }
+
 
 body{
     font-size: 16px;
@@ -47,3 +88,17 @@ body{
     background: rgba(30, 80, 255, 0.5);
     filter: blur(300px);
 }
+
+@mixin text-logo{
+    font-weight: 600;
+    line-height: 32px;
+    margin-left: 10px;
+    color: #FFFFFF;
+}
+
+@mixin text-footer{
+    font-style: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #ADB9C7;
+    }

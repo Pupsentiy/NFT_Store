@@ -33,11 +33,15 @@
       justify-content: space-between;
       .liveAuctions__card {
         padding: 24px;
+        margin-right: 24px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         border-radius: 24px;
         background-color: #272d37;
+        &:last-child{
+          margin-right: 0px;
+        }
         .liveAuctions__img-wrapper {
           width: 300px;
           height: 352px;
