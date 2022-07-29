@@ -1,0 +1,78 @@
+@import "../../styles/mixins.scss";
+
+.discover {
+  .container {
+    @include container;
+    text-align: center;
+    .discover__header {
+      text-align: center;
+      margin-top: 120px;
+      .discover__search {
+        margin-top: 40px;
+        border: solid 2px #1e50ff;
+        color: #8f9ca9;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 89%;
+        font-style: medium;
+        background: #1e50ff1a;
+        padding: 16px;
+        width: 680px;
+        border-radius: 16px;
+        &:focus {
+          border: solid 2px #fff;
+        }
+      }
+    }
+
+    .discover__wrapper-nav {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+    //   .discover__wrapper-select {
+    //     width: 30%;
+    //     .discover__select {
+    //       font-size: 16px;
+    //       color: #ffffff;
+    //       font-weight: 500;
+    //       line-height: 24px;
+    //       border-radius: 8px;
+    //       border: solid 2px #1e50ff;
+    //       padding: 16px;
+    //       background: #1e50ff1a;
+    //       width: 175px;
+
+    //       .discover__select-item{
+    //         font-size: 16px;
+    //       color: #ffffff;
+    //       font-weight: 500;
+    //       line-height: 24px;
+    //       border-radius: 8px;
+    //       border: solid 2px #1e50ff;
+    //       padding: 16px;
+    //       background: #1e50ff1a;
+    //       width: 175px;
+    //       }
+    //     }
+    //   }
+
+      .discover__button-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        .discover__btn-nav {
+          @include btn-nav;
+        }
+      }
+    }
+
+    .vievMore {
+        @include btn-vievMore;
+        background: transparent;
+    }
+  }
+}
