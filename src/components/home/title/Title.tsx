@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Title.scss";
-import pictur1 from "../../../assets/img/discover_img/wallper1234.png";
-import pictur2 from "../../../assets/img/discover_img/wallper1564.png";
-import pictur3 from "../../../assets/img/discover_img/wallper12345.png";
+// import pictur1 from "../../../assets/img/title_img/wallper1234.png";
+// import pictur2 from "../../../assets/img/discover_img/wallper1564.png";
+// import pictur3 from "../../../assets/img/discover_img/wallper12345.png";
 import binance from "../../../assets/icons/discover_logo/binance.svg";
 import trust from "../../../assets/icons/discover_logo/trustWallet.svg";
 import metamask from "../../../assets/icons/discover_logo/metamask.svg";
@@ -12,16 +12,20 @@ import toko from "../../../assets/icons/discover_logo/toko.svg";
 import linkup from "../../../assets/icons/discover_logo/linkup.svg";
 
 const Title = () => {
+
+  useEffect(() => {
+    
+  }, [])
   return (
-    <div className="discover">
+    <div className="title">
       <div className="container">
       <div className="ornament"></div>
-        <div className="discover__title">
+        <div className="title__title">
           <div className="title">
             <h3> Discover a New Era of Crypto Currency</h3>
           </div>
 
-          <div className="discover__discription">
+          <div className="title__discription">
             <p>
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
@@ -34,15 +38,15 @@ const Title = () => {
           </div>
         </div>
       </div>
-      <div className="discover__picture">
+      <div className="title__picture">
         <div className="wrapper__picture">
-          <img className="picture" src={pictur1} alt="foto" />
+          <img className="picture"  alt="card" />
         </div>
         <div className="wrapper__picture">
-          <img className="picture" src={pictur3} alt="foto" />
+          <img className="picture"  alt="card" />
         </div>
         <div className="wrapper__picture">
-          <img className="picture" src={pictur2} alt="foto" />
+          <img className="picture"  alt="card" />
         </div>
       </div>
       <nav className="wrapper__blockhain">

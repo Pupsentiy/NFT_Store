@@ -6,7 +6,7 @@ import routesConfig from "./routes/routesConfig";
 
 function App() {
   return (
-    <BrowserRouter >
+    <BrowserRouter  >
      <Header/>
      <Routes>
       {routesConfig.map((route, index) => (
