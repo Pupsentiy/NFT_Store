@@ -75,7 +75,11 @@
         align-items: center;
       .blockchain__item {
         z-index: 1;
-        .blockhain__link {
+        .blockchain__link {
+          .blockchain__link-logo{
+            width: 200px;
+            max-height: 100%;
+          }
         }
       }
     }

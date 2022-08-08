@@ -10,7 +10,7 @@ export type Cards = {
     price: number;
     img: string;
     avatar:string;
-    author:string
+    author:string;
   };
 
   export interface CardsSliceState {
