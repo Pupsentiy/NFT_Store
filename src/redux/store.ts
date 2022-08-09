@@ -1,16 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import card from './cards/slice'
-import traidPlatform from './tradingPlatform/slice'
 
 export const store = configureStore({
     reducer: {
         card,
-        traidPlatform
     }
 })
 
 export type RootState = ReturnType<typeof store.getState>;
+
+export const useAppSelector:TypedUseSelectorHook<RootState> = useSelector
 
 type AppDispatch = typeof store.dispatch;
 

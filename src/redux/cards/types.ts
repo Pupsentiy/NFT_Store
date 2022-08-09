@@ -13,7 +13,19 @@ export type Cards = {
     author:string;
   };
 
+  export type Platforms = {
+    id:number;
+    logo:string;
+    site:string;
+    alt:string;
+  }
+
+  export interface CardsSlice {
+    cards: Cards[];
+    platform:Platforms[]
+  }
+
   export interface CardsSliceState {
-    items: Cards[];
+    items:CardsSlice[]
     status: Status;
   }

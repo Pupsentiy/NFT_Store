@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Cards } from "./types";
+import { CardsSliceState } from "./types";
 
 
-export const fetchCards = createAsyncThunk<Cards[]>(
+export const fetchCards = createAsyncThunk<CardsSliceState[]>(
     'cards/fetchCardsStatus',
     async  () => {
-        const {data} = await axios.get<Cards[]>('https://62e42974c6b56b45118311cb.mockapi.io/cards')
+        const {data} = await axios.get<CardsSliceState[]>('https://62e42974c6b56b45118311cb.mockapi.io/nftBase')
     return data
     }
 )
