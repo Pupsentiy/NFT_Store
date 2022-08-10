@@ -35,7 +35,7 @@ list-style-type: none;
 H2{
 font-size: 64px;
 font-weight: 700;
-line-height: 83%;
+line-height: 100%;
 margin: 0px;
 }
 
@@ -114,6 +114,7 @@ a{
     height: 56px;
     border-radius: 8px;
     border:solid 2px #1E50FF;
+    cursor: pointer;
     &:last-child{
         margin:0px;
     }

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import CreateNft from '../../components/home/createNft/CreateNft'
-import HotNFTs from '../../components/home/hotNfts/HotNFTs'
 import LiveAuctions from '../../components/home/liveAuctions/LiveAuctions'
 import Title from '../../components/home/title/Title'
 import { fetchCards } from '../../redux/cards/asyncActions'
@@ -24,8 +23,6 @@ const Home: React.FC = () => {
     <Title/>
     <CreateNft/>
     <LiveAuctions/>
-    <HotNFTs/>
-   
     </>
   )
 }

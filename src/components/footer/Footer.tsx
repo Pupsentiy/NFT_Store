@@ -20,25 +20,8 @@ const Footer: React.FC = () => {
               discover exclusive digital items.
             </p>
           </div>
-          <div className="footer__resources">
-          <h5>Resources</h5>
-            <ul className="footer__resources-list">
-                <li ><p>Help Center</p></li>
-                <li ><p>Platform Status</p></li>
-                <li ><p>Partners</p></li>
-                <li ><p>Gas-Free Marketplace</p></li>
-                <li ><p>Blog</p></li>
-            </ul>
-          </div>
-          <div className="footer__company">
-          <h5>Company</h5>
-            <ul className="footer__company-list">
-                <li><p>Our Team</p></li>
-                <li><p>About Us</p></li>
-                <li><p>Contact Us</p></li>
-                <li><p>Career</p></li>
-            </ul>
-          </div>
+         
+        
           <div className="footer__contact">
           <h5>Contact</h5>
             <p className="footer__address">2715 Ash Dr. San Jose, South Dakota 83475</p> 

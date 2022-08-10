@@ -15,14 +15,13 @@ const Title: React.FC = () => {
 
   const platform: Platforms[] = items.slice(1, 2)?.[0]?.platform;
 
-  console.log(platform);
   return (
     <div className="title">
       <div className="container">
         <div className="ornament"></div>
         <div className="title__title">
           <div className="title-text">
-            <h3> Discover a New Era of Crypto Currency</h3>
+            <h2> Discover a New Era of Crypto Currency</h2>
           </div>
           <div className="title__discription">
             <p>

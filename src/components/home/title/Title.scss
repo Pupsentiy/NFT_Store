@@ -3,27 +3,22 @@
 .title {
   margin-top: 96px;
   position: relative;
-  .ornament{
+  .ornament {
     @include ornament;
-    top:374px;
+    top: 374px;
     right: 0px;
     position: absolute;
     z-index: 0;
   }
   .container {
     @include container;
-   
+
     .title__title {
       display: flex;
       justify-content: space-between;
       .title-text {
         width: 672px;
         height: 160px;
-        font-weight: 700;
-        font-size: 64px;
-        line-height: 80px;
-        font-style: normal;
-        word-spacing: -8px;
       }
 
       .title__discription {
@@ -35,16 +30,16 @@
         color: #adb9c7;
 
         .start__link {
-            line-height: 32px;
-            font-weight: 600;
-            color:#ffffff;
-            align-items: center;
-            display: flex;
-            text-decoration: underline!important;
-            text-transform: capitalize;
-            img{
-                margin-left: 8px;
-            }
+          line-height: 32px;
+          font-weight: 600;
+          color: #ffffff;
+          align-items: center;
+          display: flex;
+          text-decoration: underline !important;
+          text-transform: capitalize;
+          img {
+            margin-left: 8px;
+          }
         }
       }
     }
@@ -57,8 +52,8 @@
     position: relative;
     z-index: 10;
     .wrapper__picture {
-        width: 400px;
-        height: 400px;
+      width: 400px;
+      height: 400px;
       .picture {
         border-radius: 24px;
         max-width: 100%;
@@ -70,13 +65,13 @@
   .wrapper__blockhain {
     margin-top: 120px;
     .blockchain__items {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       .blockchain__item {
         z-index: 1;
         .blockchain__link {
-          .blockchain__link-logo{
+          .blockchain__link-logo {
             width: 200px;
             max-height: 100%;
           }
