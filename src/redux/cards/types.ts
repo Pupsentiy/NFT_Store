@@ -11,6 +11,7 @@ export type Cards = {
   img: string;
   avatar: string;
   author: string;
+  category:string;
 };
 
 export type Platforms = {

@@ -1,6 +1,7 @@
 import "./LiveAuctions.scss";
 import { useAppSelector } from "../../../redux/store";
 import { Cards } from "../../../redux/cards/types";
+
 const LiveAuctions = () => {
   const { items, status } = useAppSelector((state) => state.card);
 
