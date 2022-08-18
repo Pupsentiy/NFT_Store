@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchCards } from "./asyncActions";
+import { fetchItems } from "./asyncActions";
 import { CardsSlice, CardsSliceState, Status } from "./types";
 
 const initialState: CardsSliceState = {
@@ -16,17 +16,17 @@ const cardsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchCards.pending.type]: (state) => {
+    [fetchItems.pending.type]: (state) => {
       state.status = Status.LOADING;
       state.items = [];
     },
 
-    [fetchCards.fulfilled.type]: (state, action) => {
+    [fetchItems.fulfilled.type]: (state, action) => {
       state.items = action.payload;
       state.status = Status.SUCCESS;
     },
 
-    [fetchCards.rejected.type]: (state) => {
+    [fetchItems.rejected.type]: (state) => {
       state.status = Status.ERROR;
       state.items = [];
     },

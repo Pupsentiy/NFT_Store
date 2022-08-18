@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { CardsSliceState } from "./types";
 
-export const fetchCards = createAsyncThunk<CardsSliceState[]>(
+export const fetchItems = createAsyncThunk<CardsSliceState[]>(
   "cards/fetchCardsStatus",
   async () => {
     const { data } = await axios.get<CardsSliceState[]>(
