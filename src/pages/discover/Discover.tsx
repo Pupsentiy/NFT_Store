@@ -1,40 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import CardsComponents from "../../components/cards/CardsComponents";
 import Pagination from "../../components/pagination/Pagination";
 import { fetchItems } from "../../redux/cards/asyncActions";
-import { setPageCount } from "../../redux/filter/filterSlice";
+import { Cards } from "../../redux/cards/types";
+import { setCategoryId, setCurrentPage } from "../../redux/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import "./Discover.scss";
-
-
 
 const Discover: React.FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
   const dispatch = useAppDispatch();
-  const { categoryId } = useAppSelector((state) => state.filters);
+  const { categoryText } = useAppSelector((state) => state.filters);
 
-  const getItems = async () => { 
-    dispatch(
-      fetchItems()
-    )}
+  const getItems = async () => {
+    dispatch(fetchItems());
+  };
 
-    useEffect(() => {
-      getItems()
-    }, [categoryId])
+  useEffect(() => {
+    getItems();
+  }, []);
+  const card: Cards[] = items.filter(e => e.cards)?.[0]
+  ?.cards.map((e) => e)
 
   const category: string[] = items
     .filter((e) => e.cards)?.[0]
     ?.cards.map((e) => e.category)
     .filter((e, i, a) => a.indexOf(e) === i);
-
+  const categoryes: string[] = category && ["All", ...category];
   // const onChangePage = () => {
   //   useDispatch(setPageCount())
   // }
-
-
-  const onChangeCategory = (e:string) => {
-console.log(e)
-  }
+  const onChangeCategory = (cat: string) => {
+    dispatch(setCategoryId(cat));
+  };
   return (
     <div className="discover">
       <div className="container">
@@ -54,14 +53,24 @@ console.log(e)
                   </select>
                 </div> */}
           <nav className="discover__button-nav">
-            <button className="discover__btn-nav" onClick={(e) => onChangeCategory((e.target as Element).innerHTML)}>All</button>
-            {category &&
-              category.map((item: string, i: number) => (
-                <button className="discover__btn-nav" key={i} onClick={(e) => onChangeCategory((e.target as Element).innerHTML)}>
+            {categoryes &&
+              categoryes.map((item: string, i: number) => (
+                <button
+                  className={
+                    categoryText === item ? "active" : "discover__btn-nav"
+                  }
+                  key={i}
+                  onClick={(e) =>
+                    onChangeCategory((e.target as Element).innerHTML)
+                  }
+                >
                   {item}
                 </button>
               ))}
           </nav>
+        </div>
+        <div className="discover__wrapper-cards">
+        <CardsComponents value={card}/>
         </div>
         <Pagination />
       </div>

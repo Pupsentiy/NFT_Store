@@ -1,23 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { FiltersSliseState } from "./types";
 
-const initialState = { 
-    pageCount: 1,
-    categoryId: 'All',
+const initialState:FiltersSliseState = { 
+    currentPage: 1,
+    categoryText: 'All',
 }
 
 const filterSlice = createSlice ({
     name: 'filters',
     initialState,
     reducers: {
-        setPageCount(state, action) {
-            state.pageCount = action.payload
+        setCurrentPage(state, action) {
+            state.currentPage = action.payload
         },
         setCategoryId(state, action) {
-            state.categoryId = action.payload
+            state.categoryText = action.payload
         }
     }
 })
 
-export const { setPageCount, setCategoryId } = filterSlice.actions;
+export const { setCurrentPage, setCategoryId } = filterSlice.actions;
 
 export default filterSlice.reducer;
