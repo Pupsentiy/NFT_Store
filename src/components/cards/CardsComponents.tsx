@@ -1,6 +1,7 @@
 import React from "react";
 import { Cards } from "../../redux/cards/types";
 import "./CardsComponents.scss";
+
 type CardsProps = {
   value: Cards[];
 };
@@ -21,30 +22,29 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
                 {/* <img src="" alt="like" /> */}
               </div>
             </div>
-            <div className="CardsComponents__wrapper">
-              <div className="CardsComponents__block-name">
-                <h6 className="CardsComponents__card-name">{item.name}</h6>
-              </div>
               <div className="CardsComponents__block-info">
-                <div className="CardsComponents__wrapper-info">
-                <div className="liveAuctons__owner-wrapper-img">
-                  <img
-                    src={item.avatar}
-                    alt="avatar"
-                    className="CardsComponents__owner-foto"
-                  />
+                <div className="CardsComponents__block-name">
+                  <h6 className="CardsComponents__card-name">{item.name}</h6>
                 </div>
-              <p >{item.author}</p>
+            <div className="CardsComponents__wrapper">
+                <div className="CardsComponents__wrapper-info">
+                  <div className="liveAuctons__owner-wrapper-img">
+                    <img
+                      src={item.avatar}
+                      alt="avatar"
+                      className="CardsComponents__owner-foto"
+                    />
+                  </div>
+                  <p>{item.author}</p>
                 </div>
                 <div className="CardsComponents__wrapper-price">
-                  <span >
-                    {item.price.toLocaleString()} ₽
-                  </span>
+                  <span>{item.price.toLocaleString()} ₽</span>
+                </div>
                 </div>
               </div>
-                <button className="CardsComponents__btn-buy">Buy</button>
+              {/* <button className="CardsComponents__btn-buy">Buy</button> */}
             </div>
-          </div>
+          
         ))}
     </>
   );

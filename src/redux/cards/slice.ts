@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchItems } from "./asyncActions";
-import { CardsSlice, CardsSliceState, Status } from "./types";
+import { Cards, CardsSliceState, Status } from "./types";
 
 const initialState: CardsSliceState = {
   items: [],
@@ -8,10 +8,10 @@ const initialState: CardsSliceState = {
 };
 
 const cardsSlice = createSlice({
-  name: "card",
+  name: "platform",
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<CardsSlice[]>) {
+    setItems(state, action: PayloadAction<Cards[]>) {
       state.items = action.payload;
     },
   },

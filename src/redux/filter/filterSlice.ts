@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FiltersSliseState } from "./types";
 
 const initialState:FiltersSliseState = { 
@@ -13,12 +13,12 @@ const filterSlice = createSlice ({
         setCurrentPage(state, action) {
             state.currentPage = action.payload
         },
-        setCategoryId(state, action) {
+        setCategoryInnerHtml(state, action:PayloadAction<string>) {
             state.categoryText = action.payload
         }
     }
 })
 
-export const { setCurrentPage, setCategoryId } = filterSlice.actions;
+export const { setCurrentPage, setCategoryInnerHtml } = filterSlice.actions;
 
 export default filterSlice.reducer;

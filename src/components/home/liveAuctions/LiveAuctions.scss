@@ -23,6 +23,9 @@
 
       .liveAuctions__btn {
         @include btn-vievMore;
+        a{
+          color: #fff;
+        }
       }
     }
     .liveAuctions__wrapper {

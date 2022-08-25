@@ -14,19 +14,12 @@ export type Cards = {
   category:string;
 };
 
-export type Platforms = {
-  id: number;
-  logo: string;
-  site: string;
-  alt: string;
-};
-
-export interface CardsSlice {
-  cards: Cards[];
-  platform: Platforms[];
+export interface CardsSliceState {
+  items: Cards[];
+  status: Status;
 }
 
-export interface CardsSliceState {
-  items: CardsSlice[];
-  status: Status;
+export interface SearchCardsParams{
+  category:string;
+  currentPage:number;
 }

@@ -1,21 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { CardsSliceState } from "./types";
+import { CardsSliceState, SearchCardsParams } from "./types";
 
-export const fetchItems = createAsyncThunk<CardsSliceState[]>(
+export const fetchItems = createAsyncThunk<CardsSliceState[], SearchCardsParams>(
   "cards/fetchCardsStatus",
   async (params) => {
-    // const {currentPage, categoryText} = params;
+    const {currentPage, category} = params;
+    // console.log(params, 4444);
     const { data } = await axios.get<CardsSliceState[]>(
-      "https://62e42974c6b56b45118311cb.mockapi.io/nftBase",{
+      "https://62e42974c6b56b45118311cb.mockapi.io/cards",{
         params:(
           {
-            // page:currentPage,
+            page:currentPage,
             limit:12,
+            category,
           }
         )
       }
     );
+    console.log(data);
+
     return data;
   }
 );

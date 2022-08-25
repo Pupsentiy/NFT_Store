@@ -2,7 +2,7 @@ import React from "react";
 import "./CreateNft.scss";
 import logo from "../../../assets/icons/create_nft/blockLogo.svg";
 
-const CreateNft = () => {
+const CreateNft: React.FC  = () => {
   return (
     <div className="createNft">
       <div className="container">
