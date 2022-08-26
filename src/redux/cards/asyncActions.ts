@@ -12,13 +12,12 @@ export const fetchItems = createAsyncThunk<CardsSliceState[], SearchCardsParams>
         params:(
           {
             page:currentPage,
-            limit:12,
+            limit:9,
             category,
           }
         )
       }
     );
-    console.log(data);
 
     return data;
   }

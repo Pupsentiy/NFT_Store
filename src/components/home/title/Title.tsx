@@ -3,12 +3,10 @@ import "./Title.scss";
 import linkup from "../../../assets/icons/discover_logo/linkup.svg";
 import { useAppSelector } from "../../../redux/store";
 import { Cards } from "../../../redux/cards/types";
-import { Platforms } from "../../../redux/platform/types";
+import { Platforms, platforms } from "../../../mockDate/mockPlatforms";
 
 const Title: React.FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
-  const {platforms, statusPlatform} = useAppSelector((state) => state.platform)
-  console.log(platforms)
   const picture:Cards[] = items.map((e) => e)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3);
@@ -44,7 +42,7 @@ const Title: React.FC = () => {
       </div>
        <nav className="wrapper__blockhain">
         <ul className="blockchain__items">
-          {/* {platforms &&
+          {platforms &&
             platforms.map((platform:Platforms, i: number) => (
               <li className="blockchain__item" key={i}>
                 <a
@@ -60,7 +58,7 @@ const Title: React.FC = () => {
                   />
                 </a>
               </li>
-            ))}  */}
+            ))} 
         </ul>
       </nav>
     </div>

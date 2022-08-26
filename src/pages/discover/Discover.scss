@@ -7,27 +7,7 @@
     .discover__header {
       text-align: center;
       margin-top: 120px;
-      .discover__search {
-        margin-top: 40px;
-        border: solid 1px #1e50ff;
-        color: #fff;
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 89%;
-        background: #1e50ff1a;
-        padding: 16px;
-        width: 680px;
-        border-radius: 16px;
-        &:focus {
-          border: solid 1px #1e50ff;
-          -webkit-box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-          -moz-box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-          box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-        }
-        &:focus-visible {
-          outline: auto 0px;
-        }
-      }
+      
     }
 
     .discover__wrapper-nav {
