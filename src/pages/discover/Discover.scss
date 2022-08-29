@@ -7,7 +7,6 @@
     .discover__header {
       text-align: center;
       margin-top: 120px;
-      
     }
 
     .discover__wrapper-nav {
@@ -72,8 +71,10 @@
     .discover__wrapper-cards {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 20px;
+      // justify-content: space-between;
+      margin-top: 30px;
+      columns: 3;
+      column-gap: 40px;
     }
   }
 }

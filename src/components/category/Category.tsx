@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import "./Category.scss";
 import { setCategoryInnerHtml } from "../../redux/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import Sort from "../sort/Sort";
 
 const Category: React.FC = () => {
   const { categoryText } = useAppSelector((state) => state.filters);
@@ -24,11 +25,7 @@ const Category: React.FC = () => {
   }, []);
   return (
     <div className="discover__wrapper-nav">
-      {/* <div className="discover__wrapper-select">
-                  <select name="select" id="" className='discover__select'>
-                        <option value="Sort By" className='discover__select-item' >Sort By</option>
-                  </select>
-                </div> */}
+     <Sort/>
       <nav className="discover__button-nav">
         {categories &&
           categories.map((item: string, i: number) => (

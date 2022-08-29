@@ -8,7 +8,7 @@ const initialState: CardsSliceState = {
 };
 
 const cardsSlice = createSlice({
-  name: "platform",
+  name: "card",
   initialState,
   reducers: {
     setItems(state, action: PayloadAction<Cards[]>) {

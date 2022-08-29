@@ -11,24 +11,29 @@ import "./Discover.scss";
 const Discover: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items, status } = useAppSelector((state) => state.card);
-  const { categoryText, currentPage } = useAppSelector(
+  const { categoryText, currentPage,searchValue,sort } = useAppSelector(
     (state) => state.filters
   );
 
   const getItems = async () => {
     const category = categoryText !== "All" ? categoryText : "";
-
+    const search = searchValue
+    const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'; 
+    const sortBy = sort.sortProperty.replace('-', '');  
     dispatch(
       fetchItems({
+        sortBy,
+        order,
         category,
         currentPage: currentPage,
+        search,
       })
     );
   };
 
   useEffect(() => {
     getItems();
-  }, [categoryText, currentPage]);
+  }, [categoryText, currentPage,searchValue,sort.sortProperty]);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));

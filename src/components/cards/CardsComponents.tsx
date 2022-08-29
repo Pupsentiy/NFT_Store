@@ -22,11 +22,11 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
                 {/* <img src="" alt="like" /> */}
               </div>
             </div>
-              <div className="CardsComponents__block-info">
-                <div className="CardsComponents__block-name">
-                  <h6 className="CardsComponents__card-name">{item.name}</h6>
-                </div>
-            <div className="CardsComponents__wrapper">
+            <div className="CardsComponents__block-info">
+              <div className="CardsComponents__block-name">
+                <h6 className="CardsComponents__card-name">{item.name}</h6>
+              </div>
+              <div className="CardsComponents__wrapper">
                 <div className="CardsComponents__wrapper-info">
                   <div className="liveAuctons__owner-wrapper-img">
                     <img
@@ -38,13 +38,12 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
                   <p>{item.author}</p>
                 </div>
                 <div className="CardsComponents__wrapper-price">
-                  <span>{item.price.toLocaleString()} ₽</span>
-                </div>
+                  <span>{item.price.toLocaleString()} $</span>
                 </div>
               </div>
-              {/* <button className="CardsComponents__btn-buy">Buy</button> */}
             </div>
-          
+            {/* <button className="CardsComponents__btn-buy">Buy</button> */}
+          </div>
         ))}
     </>
   );

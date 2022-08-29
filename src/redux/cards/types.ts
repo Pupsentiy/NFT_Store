@@ -19,7 +19,10 @@ export interface CardsSliceState {
   status: Status;
 }
 
-export interface SearchCardsParams{
+export type SearchCardsParams = {
   category:string;
   currentPage:number;
+  search:string;
+  order:string;
+  sortBy:string;
 }

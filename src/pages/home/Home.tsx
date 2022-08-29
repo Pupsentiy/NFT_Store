@@ -8,14 +8,20 @@ import './Home.scss'
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { categoryText,currentPage } = useAppSelector((state) => state.filters);
+  const { categoryText,currentPage, searchValue,sort } = useAppSelector((state) => state.filters);
 
   const getItems = async () => { 
     const category = categoryText !== 'All' ? categoryText : '';
+    const search = searchValue
+    const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+    const sortBy = sort.sortProperty.replace('-', '');  
     dispatch(
       fetchItems({
+        sortBy,
         category,
-        currentPage:currentPage
+        currentPage:currentPage,
+        search,
+        order
       })
     )}
 
