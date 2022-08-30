@@ -24,13 +24,13 @@ const Category: React.FC = () => {
     dispatch(setCategoryInnerHtml(cat));
   }, []);
   return (
-    <div className="discover__wrapper-nav">
+    <div className="wrapper-nav">
      <Sort/>
-      <nav className="discover__button-nav">
+      <nav className="button-nav">
         {categories &&
           categories.map((item: string, i: number) => (
             <button
-              className={categoryText === item ? "active" : "discover__btn-nav"}
+              className={categoryText === item ? "active" : "btn-nav"}
               key={i}
               onClick={(e) => onChangeCategory((e.target as Element).innerHTML)}
             >

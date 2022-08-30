@@ -6,7 +6,7 @@ const initialState:FiltersSliseState = {
     categoryText: 'All',
     searchValue:'',
     sort: {
-        name: 'price',
+        name: 'price(DESC)',
         sortProperty: SortPropertyEnum.PRICE_DESC,
       },
 }   

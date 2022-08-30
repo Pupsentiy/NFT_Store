@@ -4,12 +4,18 @@ import linkup from "../../../assets/icons/discover_logo/linkup.svg";
 import { useAppSelector } from "../../../redux/store";
 import { Cards } from "../../../redux/cards/types";
 import { Platforms, platforms } from "../../../mockDate/mockPlatforms";
+import { SceletonPicture } from "./SceletonPicture";
 
 const Title: React.FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
-  const picture:Cards[] = items.map((e) => e)
+  const picture: Cards[] = items
+    .map((e) => e)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3);
+
+  const sceletons = [...new Array(3)].map((_, index) => (
+    <SceletonPicture key={index} />
+  ));
 
   return (
     <div className="title">
@@ -33,17 +39,19 @@ const Title: React.FC = () => {
         </div>
       </div>
       <div className="title__picture">
-        {picture &&
-          picture.map((pic: Cards, i: number) => (
-            <div className="wrapper__picture" key={i}>
-              <img className="picture" src={pic.img} alt="card" />
-            </div>
-          ))}
+        {status === "loading"
+          ? sceletons
+          : picture &&
+            picture.map((pic: Cards, i: number) => (
+              <div className="wrapper__picture" key={i}>
+                <img className="picture" src={pic.img} alt="card" />
+              </div>
+            ))}
       </div>
-       <nav className="wrapper__blockhain">
+      <nav className="wrapper__blockhain">
         <ul className="blockchain__items">
           {platforms &&
-            platforms.map((platform:Platforms, i: number) => (
+            platforms.map((platform: Platforms, i: number) => (
               <li className="blockchain__item" key={i}>
                 <a
                   rel="noreferrer"
@@ -58,7 +66,7 @@ const Title: React.FC = () => {
                   />
                 </a>
               </li>
-            ))} 
+            ))}
         </ul>
       </nav>
     </div>
