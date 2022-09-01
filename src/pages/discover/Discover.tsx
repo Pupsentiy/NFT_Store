@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import CardsComponents from "../../components/cards/CardsComponents";
 import Category from "../../components/category/Category";
 import Pagination from "../../components/pagination/Pagination";
@@ -10,7 +10,7 @@ import "./Discover.scss";
 
 const Discover: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items, status } = useAppSelector((state) => state.card);
+  const { items} = useAppSelector((state) => state.card);
   const { categoryText, currentPage,searchValue,sort } = useAppSelector(
     (state) => state.filters
   );
