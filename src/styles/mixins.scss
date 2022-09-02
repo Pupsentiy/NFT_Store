@@ -1,81 +1,99 @@
-
-
 @mixin container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0px 120px;
-    min-height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 120px;
+  min-height: 100%;
 }
 
 @mixin ornament {
-    width: 638px;
-    height: 587px;
-    border-radius: 50%;
-    background: rgba(30, 80, 255, 0.5);
-    filter: blur(300px);
+  width: 638px;
+  height: 587px;
+  border-radius: 50%;
+  background: rgba(30, 80, 255, 0.5);
+  filter: blur(300px);
 }
 
-@mixin text-logo{
-    font-weight: 600;
-    line-height: 32px;
-    margin-left: 10px;
-    color: #FFFFFF;
+@mixin text-logo {
+  font-weight: 600;
+  line-height: 32px;
+  margin-left: 10px;
+  color: #ffffff;
 }
 
-@mixin text-footer{
-    font-style: 400;
-    font-size: 16px;
-    line-height: 32px;
-    color: #ADB9C7;
-    }
+@mixin text-footer {
+  font-style: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #adb9c7;
+}
 
-@mixin btn-nav{
+@mixin btn-nav {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 24px;
+  background: #1e50ff1a;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #1e50ff;
+  cursor: pointer;
+
+  &:active {
     font-size: 16px;
     color: #ffffff;
-    font-weight: 500 ;
+    font-weight: 500;
     line-height: 24px;
-    background: #1E50FF1A;
+    background: #1e50ff;
     height: 50px;
     border-radius: 8px;
-    border:solid 1px #1E50FF;
-    cursor: pointer;
-   
-    &:active{
-        font-size: 16px;
-    color: #ffffff;
-    font-weight: 500 ;
-    line-height: 24px;
-    background: #1E50FF;
-    height: 50px;
-    border-radius: 8px;
-    border:none;
+    border: none;
     -webkit-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
--moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-    }
-}    
+    -moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+    box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+  }
+}
 
 @mixin btn-vievMore {
-    width: 176px;
-    border-radius: 8px;
-    border:solid 1px #1E50FF;
-    padding: 16px;
-    font-weight: 600;
-    color: #FFFFFF;
+  width: 176px;
+  border-radius: 8px;
+  border: solid 1px #1e50ff;
+  padding: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 133%;
+  cursor: pointer;
+  background: transparent;
+  &:active {
     font-size: 16px;
-    line-height: 133%;
-    cursor: pointer;
-    background: transparent;
-    &:active{
-        font-size: 16px;
     color: #ffffff;
-    font-weight: 600 ;
+    font-weight: 600;
     line-height: 133%;
-    background: #1E50FF;
+    background: #1e50ff;
     width: 176px;
     border-radius: 8px;
     -webkit-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
--moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-    }
+    -moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+    box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+  }
 }
+
+@mixin btn-login{
+    color: #000;
+        line-height: 24px;
+        background: rgba(30, 80, 255, 0.1019607843);
+        height: 30px;
+        border-radius: 5px;
+        border: solid 1px #1e50ff;
+        font-weight: 600;
+        cursor: pointer;
+        &:active {
+          color: #ffffff;
+          font-weight: 600;
+          line-height: 133%;
+          background: #1e50ff;
+          border-radius: 5px;
+          box-shadow: 0px 0px 16px 4px rgb(30 80 255 / 71%);
+        }
+}
+

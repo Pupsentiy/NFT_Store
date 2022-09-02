@@ -1,11 +1,18 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
+import { useAppDispatch } from "../../redux/store";
+import { setOpen } from "../../redux/authStore/authSlice";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const openModalAuth = () => {
+    dispatch(setOpen(true));
+  };
+
   return (
-    <header className="header__container">
+    <header className="container">
       <div className="custom__header">
         <div className="header__logo">
           <img src={pandaLogo} alt="logo" />
@@ -41,7 +48,9 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__connectWallet">
-          <button className="wallet">Connect Wallet</button>
+          <button className="wallet" onClick={() => openModalAuth()}>
+            Sign in
+          </button>
         </div>
       </div>
     </header>

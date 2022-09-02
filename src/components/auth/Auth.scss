@@ -1,0 +1,65 @@
+@import "../../styles/mixins.scss";
+
+.wrapper {
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  p {
+    @include text-logo;
+    color: #000;
+    margin: 0;
+  }
+
+  a {
+    color: #1e50ff;
+    text-decoration: revert;
+  }
+  .paper {
+    text-align: center;
+    border: 1px solid #1e50ff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 275px;
+    p{
+      font-size: 12px;
+    }
+    .wrapper-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      label {
+        
+        font-size: 13px;
+        text-align: start;
+        margin-bottom: 3px;
+        font-weight: 600;
+      }
+      input {
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #adb9c7;
+        outline: none;
+        height: 25px;
+        padding: 3px 7px;
+        line-height: normal;
+        &:focus {
+          border: 1px solid #1e50ff;
+          box-shadow: 0 0 3px 2px #1f50ffd2;
+        }
+      }
+
+      button {
+        @include btn-login;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 @import "../../styles/mixins.scss";
 
-.header__container {
+.container {
   @include container;
  
   .custom__header {
