@@ -2,7 +2,8 @@ import { createSlice} from "@reduxjs/toolkit";
 import { AuthSlice } from "./types";
 
 const initialState:AuthSlice = { 
-   open:false
+   open:false,
+   tabIndex:0
 }   
 
 const authSlice = createSlice ({
@@ -11,11 +12,13 @@ const authSlice = createSlice ({
     reducers: {
        setOpen(state, action){
         state.open = action.payload
-       }
-        
+       },
+        setTabIndex(state, action){
+         state.tabIndex = action.payload
+        }
     }
 })
 
-export const { setOpen } = authSlice.actions;
+export const { setOpen, setTabIndex } = authSlice.actions;
 
 export default authSlice.reducer;

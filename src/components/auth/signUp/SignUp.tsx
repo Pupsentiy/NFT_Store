@@ -1,22 +1,43 @@
-// import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
-import React from 'react'
-import { NavLink } from 'react-router-dom';
-import '../Auth.scss'
+import React from "react";
+import { setTabIndex } from "../../../redux/authStore/authSlice";
+import { useAppDispatch } from "../../../redux/store";
+import "../Auth.scss";
 
-const SignUp:React.FC = () => {
+const SignUp: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const modalWidndowChange1 = () => {
+    dispatch(setTabIndex(0));
+  };
+
   return (
-      <>
-        <h1>Hello</h1>
-        <p>Sign in to NFT-Store  or <NavLink to='#'>create an account</NavLink></p>
-        <form className="wrapper-form">
+    <>
+      <h1>Create account</h1>
+      <p>
+        Already have an account?
+        <button onClick={() => modalWidndowChange1()}>Sign in</button>
+      </p>
+      <form className="wrapper-form">
+        <label>Your name</label>
+        <input type="text" maxLength={50} />
         <label>Email</label>
-        <input type="text"  maxLength={64}/>
+        <input type="text" maxLength={64} />
         <label>Password</label>
-        <input type="password"  maxLength={64} />
-        <button type='submit'>Continue</button>
-        </form>
-      </>
-  )
-}
+        <input
+          type="password"
+          maxLength={64}
+          placeholder="at least 6 characters."
+        />
+        <label>Re-enter password</label>
+        <input
+          type="password"
+          maxLength={64}
+          placeholder="at least 6 characters."
+        />
+        <button>Continue</button>
+      </form>
+    </>
+  );
+};
 
-export default SignUp
+export default SignUp;

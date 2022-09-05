@@ -1,26 +1,31 @@
 import React from "react";
-import CreateAccount from "./createAccount/CreateAccount";
-import SignUp from "./signUp/SignUp";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
 import { setOpen } from "../../redux/authStore/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import close from "../../assets/icons/close.svg";
+import SignIn from "./signIn/SignIn";
+import SignUp from "./signUp/SignUp";
 
-const Auth:React.FC = () => {
+const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { open } = useAppSelector((state) => state.auth);
+  const { open, tabIndex } = useAppSelector((state) => state.auth);
 
-  // const openModalAuth = () => {
-  //   dispatch(setOpen(true));
-  // };
+  const closeModalAuth = () => {
+    dispatch(setOpen(false));
+  };
+
+  const tabPanel = [<SignIn />, <SignUp />];
   return (
-    <div className="wrapper">
+   <div className={open === true ? "onTheBackground" : ""}>
+     <div className={open === true ? "wrapper" : "no-active"}>
+      <button className="button__close-modal" onClick={() => closeModalAuth()}>
+        <img src={close} alt="close" />
+      </button>
       <img src={pandaLogo} alt="logo" />
       <p className="logo__text">NFT Store</p>
-      <div className="paper">
-        {/* <SignUp/> */}
-        <CreateAccount   />
-      </div>
+      <div className="paper">{tabPanel[tabIndex]}</div>
     </div>
+   </div>
   );
 };
 
