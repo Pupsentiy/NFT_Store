@@ -1,13 +1,31 @@
 import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { setTabIndex } from "../../../redux/authStore/authSlice";
 import { useAppDispatch } from "../../../redux/store";
 import "../Auth.scss";
+import { loginValidation, nameValidation, passwordValidation } from "../validation";
+
+interface ISignUpForm {
+  name: string;
+  email: string;
+  password: string;
+}
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    // reset,
+  } = useForm<ISignUpForm>();
 
   const modalWidndowChange1 = () => {
     dispatch(setTabIndex(0));
+  };
+
+  const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
+    console.log(data);
   };
 
   return (
@@ -17,24 +35,35 @@ const SignUp: React.FC = () => {
         Already have an account?
         <button onClick={() => modalWidndowChange1()}>Sign in</button>
       </p>
-      <form className="wrapper-form">
-        <label>Your name</label>
-        <input type="text" maxLength={50} />
-        <label>Email</label>
-        <input type="text" maxLength={64} />
-        <label>Password</label>
-        <input
-          type="password"
-          maxLength={64}
-          placeholder="at least 6 characters."
-        />
-        <label>Re-enter password</label>
-        <input
-          type="password"
-          maxLength={64}
-          placeholder="at least 6 characters."
-        />
-        <button>Continue</button>
+      <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Your Name
+          <input type="text" {...register("name", {...nameValidation})} />
+          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+        </label>
+        <label>
+          Email
+          <input type="text" {...register("email", { ...loginValidation })} />
+          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            {...register("password", { ...passwordValidation })}
+          />
+          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+        </label>
+        <label>
+          Re-enter password
+          <input
+            type="password"
+            placeholder="at least 6 characters."
+            {...register("password", { ...passwordValidation })}
+          />
+          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+        </label>
+        <button type="submit">Continue</button>
       </form>
     </>
   );
