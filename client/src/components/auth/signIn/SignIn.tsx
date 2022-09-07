@@ -1,9 +1,10 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { setTabIndex } from "../../../redux/authStore/authSlice";
 import { useAppDispatch } from "../../../redux/store";
+import { signIn } from "../validation";
 import "../Auth.scss";
-import { loginValidation, passwordValidation } from "../validation";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface ISignInForm {
   email: string;
@@ -15,15 +16,16 @@ const SignIn: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors},
-    // reset,
-  } = useForm<ISignInForm>();
+    formState: { errors },
+    reset,
+  } = useForm<ISignInForm>({ resolver: yupResolver(signIn), mode: "onBlur" });
 
   const modalWidndowChange = () => {
     dispatch(setTabIndex(1));
   };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     console.log(data);
+    reset()
   };
   return (
     <>
@@ -36,13 +38,21 @@ const SignIn: React.FC = () => {
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Email
-          <input type="text" {...register("email", { ...loginValidation })} />
-          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+          <input type="email" {...register("email")} />
+          {errors?.email && (
+            <div className="errors">
+              <p>{errors.email.message}</p>
+            </div>
+          )}
         </label>
         <label>
           Password
-          <input type="password" {...register("password" , {...passwordValidation})} />
-          {errors?.password && (<div className="errors"><p>{errors.password.message}</p></div>)}
+          <input type="password" {...register("password")} />
+          {errors?.password && (
+            <div className="errors">
+              <p>{errors.password.message}</p>
+            </div>
+          )}
         </label>
         <button type="submit">Continue</button>
       </form>

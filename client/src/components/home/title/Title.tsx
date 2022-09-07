@@ -18,7 +18,7 @@ const Title: React.FC = () => {
   ));
 
   return (
-    <div className="title">
+    <section className="title">
       <div className="container">
         <div className="ornament"></div>
         <div className="title__title">
@@ -69,7 +69,7 @@ const Title: React.FC = () => {
             ))}
         </ul>
       </nav>
-    </div>
+    </section>
   );
 };
 

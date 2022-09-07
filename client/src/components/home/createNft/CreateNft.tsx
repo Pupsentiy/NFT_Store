@@ -4,7 +4,7 @@ import logo from "../../../assets/icons/create_nft/blockLogo.svg";
 
 const CreateNft: React.FC  = () => {
   return (
-    <div className="createNft">
+    <section className="createNft">
       <div className="container">
         <div className="createNft__header">
           <h3 className="createNft__title">Create and sell your NFTs</h3>
@@ -42,7 +42,7 @@ const CreateNft: React.FC  = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

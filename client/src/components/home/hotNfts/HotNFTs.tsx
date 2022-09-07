@@ -3,7 +3,7 @@ import "./HotNFTs.scss"
 
 const HotNFTs = () => {
   return (
-    <div className='hotNFTs'>
+    <section className='hotNFTs'>
         <div className="container">
                 <div className="hotNFTs__header">
                     <h2 className="hotNFTs__title">Hot NFts</h2>
@@ -23,7 +23,7 @@ const HotNFTs = () => {
                   <button className="hotNFTs__creat-btn">Join Comunity Now</button>
                 </section>
         </div>
-    </div>
+    </section>
   )
 }
 

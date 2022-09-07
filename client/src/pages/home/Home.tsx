@@ -31,11 +31,11 @@ const Home: React.FC = () => {
  
 
   return (
-    <>   
+    <main>   
     <Title/>
     <CreateNft/>
     <LiveAuctions/>
-    </>
+    </main>
   )
 }
 

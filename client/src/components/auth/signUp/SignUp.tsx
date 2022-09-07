@@ -2,13 +2,15 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { setTabIndex } from "../../../redux/authStore/authSlice";
 import { useAppDispatch } from "../../../redux/store";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signUpShema } from "../validation";
 import "../Auth.scss";
-import { loginValidation, nameValidation, passwordValidation } from "../validation";
 
 interface ISignUpForm {
   name: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 const SignUp: React.FC = () => {
@@ -17,8 +19,8 @@ const SignUp: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
-  } = useForm<ISignUpForm>();
+    reset,
+  } = useForm<ISignUpForm>({ resolver: yupResolver(signUpShema),mode:'onBlur' });
 
   const modalWidndowChange1 = () => {
     dispatch(setTabIndex(0));
@@ -26,6 +28,7 @@ const SignUp: React.FC = () => {
 
   const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
     console.log(data);
+    reset()
   };
 
   return (
@@ -38,30 +41,43 @@ const SignUp: React.FC = () => {
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Your Name
-          <input type="text" {...register("name", {...nameValidation})} />
-          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+          <input type="text" {...register("name")} />
+          {errors?.name && (
+            <div className="errors">
+              <p>{errors.name.message}</p>
+            </div>
+          )}
         </label>
         <label>
           Email
-          <input type="text" {...register("email", { ...loginValidation })} />
-          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+          <input type="email" {...register("email")} />
+          {errors?.email && (
+            <div className="errors">
+              <p>{errors.email.message}</p>
+            </div>
+          )}
         </label>
         <label>
           Password
-          <input
-            type="password"
-            {...register("password", { ...passwordValidation })}
-          />
-          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+          <input type="password" {...register("password")} />
+          {errors?.password && (
+            <div className="errors">
+              <p>{errors.password.message}</p>
+            </div>
+          )}
         </label>
         <label>
           Re-enter password
           <input
             type="password"
             placeholder="at least 6 characters."
-            {...register("password", { ...passwordValidation })}
+            {...register("confirmPassword")}
           />
-          {errors?.email && (<div className="errors"><p>{errors.email.message}</p></div>)}
+          {errors?.confirmPassword && (
+            <div className="errors">
+              <p>{errors.confirmPassword.message}</p>
+            </div>
+          )}
         </label>
         <button type="submit">Continue</button>
       </form>

@@ -13,7 +13,7 @@ const sceletonsCards = [... new Array(3)].map((_, index) => <SceletonCards key={
 
 
   return (
-    <div className="liveAuctions">
+    <section className="liveAuctions">
       <div className="ornament"></div>
       <div className="container">
         <div className="liveAuctions__header">
@@ -26,7 +26,7 @@ const sceletonsCards = [... new Array(3)].map((_, index) => <SceletonCards key={
           }
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

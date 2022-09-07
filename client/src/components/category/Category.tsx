@@ -22,7 +22,7 @@ const Category: React.FC = () => {
 
   const onChangeCategory = useCallback((cat: string) => {
     dispatch(setCategoryInnerHtml(cat));
-  }, []);
+  }, [categoryText]);
   return (
     <div className="wrapper-nav">
      <Sort/>
