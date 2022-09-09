@@ -1,4 +1,4 @@
-const sequelize = require("./db");
+const sequelize = require("../db");
 const { DataTypes } = require("sequelize");
 
 const User = sequelize.define("user", {
@@ -23,7 +23,7 @@ const Card = sequelize.define("card", {
   autor: { type: DataTypes.STRING, unique: true, allowNull: false },
   img: { type: DataTypes.STRING, allowNull: false },
   avatar: { type: DataTypes.STRING, allowNull: false },
-  category: { type: DataTypes.INTEGER, allowNull: false },
+  categoryId: { type: DataTypes.INTEGER, allowNull: false },
 });
 
 const Category = sequelize.define("category", {
