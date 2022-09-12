@@ -1,13 +1,34 @@
-class CardController {
-  async create(req,res) {
+const uuid = require("uuid");
+const path = require("path");
+const {Card} = require('../models/models')
+const ApiError =require('../error/ApiError')
 
-  }
-  async getAll(req,res) {
+class CardController {
+  async create(req, res, next) {
+   try {
+    let { name, price, author, categoryId,img,avatar} = req.body;
+    // const { img } = req.files;
+    // const { avatar } = req.files;
+    // let fileName = uuid.v4() + ".jpg";
+    // img.mv(path.resolve(__dirname, "..", "static", fileName));
+    // avatar.mv(path.resolve(__dirname, "..", "static", fileName));
+
+    const card = await Card.create({
+      name,
+      price,
+      author,
+      categoryId,
+      img,
+      avatar
+    });
+    return res.json(card)
     
+   } catch (e) {
+    next(ApiError.badRequest(e.message))
+   }
   }
-  async getOne(req,res) {
-    
-  }
+  async getAll(req, res) {}
+  async getOne(req, res) {}
 }
 
-module.exports = new CardController()
+module.exports = new CardController();

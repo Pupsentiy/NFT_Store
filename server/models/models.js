@@ -20,7 +20,7 @@ const Card = sequelize.define("card", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, unique: true, allowNull: false },
   price: { type: DataTypes.INTEGER, allowNull: false },
-  autor: { type: DataTypes.STRING, unique: true, allowNull: false },
+  author: { type: DataTypes.STRING, unique: true, allowNull: false },
   img: { type: DataTypes.STRING, allowNull: false },
   avatar: { type: DataTypes.STRING, allowNull: false },
   categoryId: { type: DataTypes.INTEGER, allowNull: false },
@@ -46,6 +46,7 @@ BasketCard.belongsTo(Basket);
 module.exports = {
   User,
   Basket,
+  Card,
   BasketCard,
   Category,
 };
