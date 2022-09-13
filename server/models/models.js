@@ -20,7 +20,7 @@ const Card = sequelize.define("card", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, unique: true, allowNull: false },
   price: { type: DataTypes.INTEGER, allowNull: false },
-  author: { type: DataTypes.STRING, unique: true, allowNull: false },
+  author: { type: DataTypes.STRING, allowNull: false },
   img: { type: DataTypes.STRING, allowNull: false },
   avatar: { type: DataTypes.STRING, allowNull: false },
   categoryId: { type: DataTypes.INTEGER, allowNull: false },
