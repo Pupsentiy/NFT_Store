@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
 import { useAppDispatch } from "../../redux/store";
-import { setOpen } from "../../redux/authStore/authSlice";
+import { setOpen } from "../../redux/authModalWindow/slice";
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -48,9 +48,9 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="header__connectWallet">
-          <button className="wallet" onClick={() => openModalAuth()}>
+          <NavLink to="/auth" className="wallet" onClick={() => openModalAuth()}>
             Sign in
-          </button>
+          </NavLink>
         </div>
       </div>
     </header>

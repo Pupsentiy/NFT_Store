@@ -1,13 +1,13 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { setTabIndex } from "../../../redux/authStore/authSlice";
+import { setTabIndex } from "../../../redux/authModalWindow/slice";
 import { useAppDispatch } from "../../../redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpShema } from "../validation";
 import "../Auth.scss";
 
 interface ISignUpForm {
-  name: string;
+  firstName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -41,10 +41,10 @@ const SignUp: React.FC = () => {
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Your Name
-          <input type="text" {...register("name")} />
-          {errors?.name && (
+          <input type="text" {...register("firstName")} />
+          {errors?.firstName && (
             <div className="errors">
-              <p>{errors.name.message}</p>
+              <p>{errors.firstName.message}</p>
             </div>
           )}
         </label>

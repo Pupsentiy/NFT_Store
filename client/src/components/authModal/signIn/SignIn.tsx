@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { setTabIndex } from "../../../redux/authStore/authSlice";
+import { setTabIndex } from "../../../redux/authModalWindow/slice";
 import { useAppDispatch } from "../../../redux/store";
 import { signIn } from "../validation";
 import "../Auth.scss";

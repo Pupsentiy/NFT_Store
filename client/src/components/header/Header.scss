@@ -50,7 +50,7 @@
 
     .header__connectWallet {
       .wallet {
-        @include btn-vievMore;
+        @include btn-connectWallet;
       }
     }
   }

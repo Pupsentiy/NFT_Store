@@ -11,7 +11,7 @@ export const emeilSchema = yup
   .matches(EMAIL_REGEXP, "Enter your email")
   .required("Please Enter Your Email!");
 
-export const nameShema = yup
+export const firstNameShema = yup
   .string()
   .typeError("должно быть строкой")
   .matches(NAME_REGEXP, "First character must be a letter")
@@ -31,7 +31,7 @@ export const confrimPasswordShema = yup
   .required("Please Enter Your Password!");
 
 export const signUpShema = yup.object().shape({
-  name: nameShema,
+  firstName: firstNameShema,
   email: emeilSchema,
   password: passwordShema,
   confirmPassword: confrimPasswordShema,

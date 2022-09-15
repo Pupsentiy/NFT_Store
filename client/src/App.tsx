@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Auth from "./components/auth/Auth";
+import Auth from "./components/authModal/Auth";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import routesConfig from "./routes/routesConfig";

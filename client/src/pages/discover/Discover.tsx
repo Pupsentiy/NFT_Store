@@ -10,16 +10,16 @@ import "./Discover.scss";
 
 const Discover: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items} = useAppSelector((state) => state.card);
-  const { categoryText, currentPage,searchValue,sort } = useAppSelector(
+  const { items } = useAppSelector((state) => state.card);
+  const { categoryText, currentPage, searchValue, sort } = useAppSelector(
     (state) => state.filters
   );
 
   const getItems = async () => {
     const category = categoryText !== "All" ? categoryText : "";
-    const search = searchValue
-    const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'; 
-    const sortBy = sort.sortProperty.replace('-', '');  
+    const search = searchValue;
+    const order = sort.sortProperty.includes("-") ? "asc" : "desc";
+    const sortBy = sort.sortProperty.replace("-", "");
     dispatch(
       fetchItems({
         sortBy,
@@ -33,7 +33,7 @@ const Discover: React.FC = () => {
 
   useEffect(() => {
     getItems();
-  }, [categoryText, currentPage,searchValue,sort.sortProperty]);
+  }, [categoryText, currentPage, searchValue, sort.sortProperty]);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));

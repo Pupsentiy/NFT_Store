@@ -1,11 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
+import user from './authRegisterUser/slice'
 import card from "./cards/slice";
 import filters from './filter/filterSlice'
-import auth from './authStore/authSlice'
+import auth from './authModalWindow/slice'
+
 export const store = configureStore({
   reducer: {
+    user,
     card,
     filters,
     auth
