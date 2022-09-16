@@ -1,9 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { setTabIndex } from "../../../redux/authModalWindow/slice";
+import { setTabIndex } from "../../../redux/auth/changeModal/slice";
 import { useAppDispatch } from "../../../redux/store";
 import { signIn } from "../validation";
-import "../Auth.scss";
+import "../../../pages/auth/Auth.scss";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface ISignInForm {

@@ -1,10 +1,13 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { setTabIndex } from "../../../redux/authModalWindow/slice";
-import { useAppDispatch } from "../../../redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { setTabIndex } from "../../../redux/auth/changeModal/slice";
+import { useAppDispatch } from "../../../redux/store";
+import { registerUser } from "../../../redux/auth/signUp/asyncActions";
 import { signUpShema } from "../validation";
-import "../Auth.scss";
+
+import "../../../pages/auth/Auth.scss";
 
 interface ISignUpForm {
   firstName: string;
@@ -20,15 +23,20 @@ const SignUp: React.FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ISignUpForm>({ resolver: yupResolver(signUpShema),mode:'onBlur' });
+  } = useForm<ISignUpForm>({
+    resolver: yupResolver(signUpShema),
+    mode: "onBlur",
+  });
 
-  const modalWidndowChange1 = () => {
+  const modalWidndowChange = () => {
     dispatch(setTabIndex(0));
   };
 
   const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
-    console.log(data);
-    reset()
+    dispatch(registerUser(data));
+    console.log(data, "submit");
+    reset();
+    dispatch(setTabIndex(0));
   };
 
   return (
@@ -36,11 +44,11 @@ const SignUp: React.FC = () => {
       <h1>Create account</h1>
       <p>
         Already have an account?
-        <button onClick={() => modalWidndowChange1()}>Sign in</button>
+        <button onClick={() => modalWidndowChange()}>Sign in</button>
       </p>
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>
-          Your Name
+          First Name
           <input type="text" {...register("firstName")} />
           {errors?.firstName && (
             <div className="errors">

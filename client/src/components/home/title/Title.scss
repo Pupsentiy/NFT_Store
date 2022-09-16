@@ -47,9 +47,10 @@
 
   .title__picture {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 56px;
     position: relative;
+    padding: 0 30px;
     .wrapper__picture {
       width: 400px;
       height: 400px;

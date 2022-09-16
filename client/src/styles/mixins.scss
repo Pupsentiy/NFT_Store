@@ -1,8 +1,8 @@
 @mixin container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0px 120px;
   min-height: 100%;
+  padding: 0 30px;
 }
 
 @mixin ornament {
@@ -111,13 +111,14 @@
         border: solid 1px #1e50ff;
         font-weight: 600;
         cursor: pointer;
+        margin-top: 10px;
         &:active {
           color: #ffffff;
-          font-weight: 600;
-          line-height: 133%;
-          background: #1e50ff;
-          border-radius: 5px;
-          box-shadow: 0px 0px 16px 4px rgb(30 80 255 / 71%);
+    font-weight: 600;
+    line-height: 133%;
+    background: #1e50ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px rgb(30 80 255 / 71%);
         }
 }
 
