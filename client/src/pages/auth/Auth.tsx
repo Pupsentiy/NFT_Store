@@ -3,10 +3,12 @@ import pandaLogo from "../../assets/icons/pandaLogo.svg";
 import { useAppSelector } from "../../redux/store";
 import SignIn from "../../components/authModal/signIn/SignIn";
 import SignUp from "../../components/authModal/signUp/SignUp";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loader from "../../components/loader/Loader";
 
 const Auth: React.FC = () => {
-  const { tabIndex } = useAppSelector((state) => state.auth);
+  const { tabIndex } = useAppSelector((state) => state.changeModal);
+  const { isLoading } = useAppSelector((state) => state.signUp);
   const tabPanel: JSX.Element[] = [<SignIn />, <SignUp />];
 
   return (
@@ -15,7 +17,11 @@ const Auth: React.FC = () => {
         <img src={pandaLogo} alt="logo" />
         <p className="logo__text">NFT Store</p>
       </Link>
-      <div className="paper">{tabPanel[tabIndex]}</div>
+      {isLoading !== true ? (
+        <div className="paper">{tabPanel[tabIndex]}</div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

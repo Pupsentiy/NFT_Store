@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
 
@@ -6,10 +6,10 @@ const Header: React.FC = () => {
   return (
     <header className="container">
       <div className="custom__header">
-        <div className="header__logo">
+        <Link to="/" className="header__logo">
           <img src={pandaLogo} alt="logo" />
           <p className="logo__text">NFT Store</p>
-        </div>
+        </Link>
         <nav className="header__menu_primary">
           <ul className="main__menu">
             <li className="menu__item">
@@ -33,8 +33,8 @@ const Header: React.FC = () => {
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink to="/contact-us" className="item-link">
-                Contact Us
+              <NavLink to="/profile" className="item-link">
+                Contact Us/profile
               </NavLink>
             </li>
           </ul>

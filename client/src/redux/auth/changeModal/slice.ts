@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AuthSlice } from "./types";
+import { AuthTab } from "../types";
 
-const initialState: AuthSlice = {
+const initialState: AuthTab = {
   tabIndex: 0,
 };
 
-const authSlice = createSlice({
-  name: "auth",
+const changeSlice = createSlice({
+  name: "changeModal",
   initialState,
   reducers: {
     setTabIndex(state, action) {
@@ -15,6 +15,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setTabIndex } = authSlice.actions;
+export const { setTabIndex } = changeSlice.actions;
 
-export default authSlice.reducer;
+export default changeSlice.reducer;

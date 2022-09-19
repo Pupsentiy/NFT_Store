@@ -2,16 +2,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { registerUser } from "./asyncActions";
-import { SignUp } from "./types";
+import { SignUp } from "../types";
 
 const initialState: SignUp = {
   isLoading: false,
-  isAuth: false,
-  error: { message: "An Error occurred" },
+  succes: false,
+  error: { message: "" },
 };
 
 const signUpSlice = createSlice({
-  name: "auth",
+  name: "signUp",
   initialState,
   reducers: {},
   extraReducers: {
@@ -20,12 +20,13 @@ const signUpSlice = createSlice({
     },
     [registerUser.fulfilled.type]: (state, action) => {
       state.currentUser = action.payload;
+      state.error = action.payload;
+      state.succes = true;
       state.isLoading = false;
-      state.isAuth = true;
+      console.log(action,'fulfiled')
     },
     [registerUser.rejected.type]: (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });
