@@ -1,32 +1,35 @@
 export type signUpUser = {
-  email:string;
-  firstName:string;
-  password:string;
-  img?:string;
-}
+  email: string;
+  firstName: string;
+  password: string;
+};
 
 export type signInUser = {
-  email:string;
-  password:string;
-}
+  email: string;
+  password: string;
+};
 
 export type AuthError = {
-  message: string
-}
+  message: string;
+};
 
-export interface SignUp  { 
+export interface SignUp {
   isLoading: boolean;
-  succes:boolean;
-  currentUser?:signUpUser
-  error:AuthError
+  succes: boolean;
+  error: AuthError;
 }
 
 export interface AuthTab {
-  tabIndex:number
+  tabIndex: number;
 }
 
-export interface SignIn  { 
+export interface SignIn {
   isLoading: boolean;
-  isAuth:boolean;
-  error:AuthError
+  isAuth: boolean;
+  error: AuthError;
+  userToken:string | null;
+}
+export type userInfo = { 
+  userInfo: object;
+  isLoading: boolean;
 }

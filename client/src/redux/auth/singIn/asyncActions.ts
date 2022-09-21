@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { API } from "../../../common/enums";
-import { authQuery } from "../../../api/fetchWrappers";
+import { httpQuery } from "../../../api/fetchWrappers";
 import { signInUser } from "../types";
 
 export const loginUser = createAsyncThunk(
   `${API.signInPath}`,
-  async (date: signInUser, { rejectWithValue }) => {
+  async (data: signInUser, { rejectWithValue }) => {
     try {
-      const response = await authQuery(date, API.signInPath);
+      const response = await httpQuery("POST",API.signInPath,data);
       return response;
     } catch (e: any) {
       if (e.response && e.response.data.message) {

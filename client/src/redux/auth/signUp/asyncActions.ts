@@ -6,9 +6,9 @@ import { signUpUser } from "../types";
 
 export const registerUser = createAsyncThunk(
   `${API.signUpPath}`,
-  async (date: signUpUser, { rejectWithValue }) => {
+  async (data: signUpUser, { rejectWithValue }) => {
     try {
-      const response = await authQuery(date, API.signUpPath);
+      const response = await authQuery(data, API.signUpPath);
       return response;
     } catch (e: any) {
       if (e.response && e.response.data.message) {

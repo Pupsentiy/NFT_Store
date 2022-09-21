@@ -19,11 +19,11 @@ const signUpSlice = createSlice({
       state.isLoading = true;
     },
     [registerUser.fulfilled.type]: (state, action) => {
-      state.currentUser = action.payload;
+      // state.currentUser = action.payload;
       state.error = action.payload;
       state.succes = true;
       state.isLoading = false;
-      console.log(action,'fulfiled')
+      // console.log(action,'fulfiled')
     },
     [registerUser.rejected.type]: (state, action) => {
       state.isLoading = false;

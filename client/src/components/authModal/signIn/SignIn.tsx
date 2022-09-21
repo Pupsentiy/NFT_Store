@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginUser } from "../../../redux/auth/singIn/asyncActions";
@@ -8,6 +8,7 @@ import { setTabIndex } from "../../../redux/auth/changeModal/slice";
 import { signIn } from "../validation";
 
 import "../../../pages/auth/Auth.scss";
+import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
 
 interface ISignInForm {
   email: string;
@@ -16,8 +17,7 @@ interface ISignInForm {
 
 const SignIn: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { error,isLoading } = useAppSelector((state) => state.singIn);
-  
+  const { error, isLoading } = useAppSelector((state) => state.singIn);
   const {
     register,
     handleSubmit,
@@ -25,17 +25,18 @@ const SignIn: React.FC = () => {
     reset,
   } = useForm<ISignInForm>({ resolver: yupResolver(signIn), mode: "onBlur" });
 
+
+
   const modalWidndowChange = () => {
     dispatch(setTabIndex(1));
   };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     dispatch(loginUser(data));
+    dispatch(getProfile());
     reset();
   };
   return (
     <>
-      
-      
       <h1>Hello</h1>
       <p>
         Sign in to NFT-Store or
@@ -63,8 +64,7 @@ const SignIn: React.FC = () => {
         </label>
         <button type="submit">Continue</button>
       </form>
-      
-     </>
+    </>
   );
 };
 

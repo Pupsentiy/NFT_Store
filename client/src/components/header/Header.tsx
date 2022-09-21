@@ -1,8 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
+import { useAppSelector } from "../../redux/store";
 
 const Header: React.FC = () => {
+  const { isAuth } = useAppSelector((state) => state.singIn);
+
   return (
     <header className="container">
       <div className="custom__header">
@@ -40,9 +43,17 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="header__connectWallet">
-          <NavLink to="/auth">
+          {isAuth === true ? 
+          <div>
+            
+          </div>
+        :
+        <NavLink to="/auth">
             <button className="wallet">Sign in</button>
           </NavLink>
+        }
+
+          
         </div>
       </div>
     </header>
