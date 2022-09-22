@@ -41,6 +41,8 @@ class UserController {
     if (!user) {
       return next(ApiError.internal("Пользователь не найден"));
     }
+    console.log(user)
+
     let comparePassword = bcrypt.compareSync(password, user.password);
     if (!comparePassword) {
       return next(ApiError.internal("Указан неверный пароль"));
@@ -52,6 +54,26 @@ class UserController {
   async check(req, res) {
     const token = generateJwt(req.user.id, req.user.email, req.user.role);
     return res.json({ token });
+  }
+
+  async getUserProfile(req, res, next) {
+    const {token} = req.params
+console.log(token)
+    const user = await User.findOne({
+      where:{token},
+
+    });
+    if (user) {
+      return res.json({
+        id: user.id,
+        firstName: user.firstName,
+        avatar: user.avatar,
+        email: user.email,
+        role: user.role,
+      });
+    } else {
+      return next(ApiError.internal("Пользователь не найден"));
+    }
   }
 }
 

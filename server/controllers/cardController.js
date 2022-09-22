@@ -42,7 +42,6 @@ class CardController {
     return res.json(card);
   }
   async getOne(req, res) {
-    const {id} = req.params
     const card = await Card.findOne(
       {
         where:{id},
