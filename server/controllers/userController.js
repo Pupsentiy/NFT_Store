@@ -11,12 +11,12 @@ const generateJwt = (id, email, role) => {
 
 class UserController {
   async registration(req, res, next) {
-    const { email, firstName, avatar, password, role } = req.body;
+    const { email, firstName, password, role } = req.body;
     if (!email || !password) {
       return next(ApiError.badRequest("Некорректный email или password"));
     }
-    const condidate = await User.findOne({ where: { email } });
-    if (condidate) {
+    const candidate = await User.findOne({where: {email}});
+    if (candidate) {
       return next(
         ApiError.badRequest("Пользователь с таким email уже существует")
       );
@@ -25,13 +25,11 @@ class UserController {
     const user = await User.create({
       email,
       firstName,
-      avatar,
       role,
       password: hashPassword,
     });
     const basket = await Basket.create({ userId: user.id });
     const token = generateJwt(user.id, user.email, user.role);
-
     return res.json({ token });
   }
 
@@ -41,7 +39,6 @@ class UserController {
     if (!user) {
       return next(ApiError.internal("Пользователь не найден"));
     }
-    console.log(user)
 
     let comparePassword = bcrypt.compareSync(password, user.password);
     if (!comparePassword) {
@@ -57,18 +54,14 @@ class UserController {
   }
 
   async getUserProfile(req, res, next) {
-    const {token} = req.params
-console.log(token)
-    const user = await User.findOne({
-      where:{token},
+    
+    const user = await User.findOne(req.user)
 
-    });
     if (user) {
       return res.json({
         id: user.id,
         firstName: user.firstName,
         avatar: user.avatar,
-        email: user.email,
         role: user.role,
       });
     } else {

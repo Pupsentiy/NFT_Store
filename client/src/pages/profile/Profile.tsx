@@ -7,16 +7,14 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 
 const Profile: React.FC = () => {
-  const { userInfo } = useAppSelector((state) => state.userInfo);
-  const { userToken } = useAppSelector((state) => state.singIn)
-  const dispatch = useAppDispatch();
-  console.log(userToken)
+  const { userInfo } = useAppSelector((state) => state.getProfileInfo);
+  // const dispatch = useAppDispatch();
   // useEffect(() => {
-  //   if (userToken) {
+  //
   //     dispatch(getProfile())
-  //   }
+  //
   // }, [userToken, dispatch])
-
+  console.log(userInfo,'12')
   return (
     <div className="profile">
       <div className="container">

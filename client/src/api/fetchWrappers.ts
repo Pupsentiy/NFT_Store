@@ -8,7 +8,7 @@ async function http(path: string, config: RequestInit) {
     const response = await fetch(request);
 
     if (response.status !== 200 && 201) {
-      toast.error(response.statusText);
+      console.error(response.statusText);
     }
     if (response.statusText === 'Unauthorized') {
       window.location.href = '/auth';
@@ -17,18 +17,19 @@ async function http(path: string, config: RequestInit) {
       return;
     }
     if (!localStorage.getItem('accessToken') && !localStorage.getItem('refreshToken')) {
-      toast.error('Login error please relogin');
+      console.error('Login error please re-login');
     }
     return await response.json();
   } catch (err: any) {
-    toast.error(err.message);
+    console.error(err.message);
   }
 }
 
 const headers = {
   'Content-Type': 'application/json',
 };
-const authorizationHeaders = { Authorization: `${localStorage.getItem('accessToken')}` };
+const authorizationHeaders = { Authorization: `Bearer ${localStorage.getItem('accessToken')}` };
+console.log(authorizationHeaders, 'authorizationHeaders')
 
 export async function httpQuery<U>(method: string, path: string, body?: U) {
   if ((method === 'POST' || method === 'PUT' || method === 'PATCH') && authorizationHeaders.Authorization) {
@@ -50,7 +51,6 @@ export async function httpQuery<U>(method: string, path: string, body?: U) {
         ...authorizationHeaders,
       },
     };
-
     return await http(`${API.mainPath}${path}`, config);
   }
   return await http(`${API.mainPath}${path}`, { method, headers });

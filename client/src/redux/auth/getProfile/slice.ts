@@ -5,13 +5,13 @@ import { getProfile } from "./asyncActions";
 import { userInfo } from "../types";
 
 const initialState: any = {
-   userInfo:{},
+   userInfo:null,
    isLoading:false,
    error:''
 };
 
 const profileUserSlice = createSlice({
-  name: "userInfo",
+  name: "getProfileInfo",
   initialState,
   reducers: {},
   extraReducers: {
@@ -22,9 +22,8 @@ const profileUserSlice = createSlice({
       state.userInfo = action.payload;
       state.isLoading = false
       state.error = action.payload
-      console.log(action,'fulfiled')
     },
-    [getProfile.rejected.type]: (state, action) => {
+    [getProfile.rejected.type]: (state) => {
       state.isLoading = true
     },
   },

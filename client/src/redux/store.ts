@@ -6,7 +6,7 @@ import singIn from './auth/singIn/slice'
 import card from "./cards/slice";
 import filters from './filter/filterSlice'
 import changeModal from './auth/changeModal/slice'
-import userInfo from './auth/getProfile/slice'
+import getProfileInfo from './auth/getProfile/slice'
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +15,7 @@ export const store = configureStore({
     card,
     filters,
     changeModal,  
-    userInfo
+    getProfileInfo
   },
 });
 

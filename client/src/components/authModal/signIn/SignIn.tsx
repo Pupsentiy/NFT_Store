@@ -9,6 +9,7 @@ import { signIn } from "../validation";
 
 import "../../../pages/auth/Auth.scss";
 import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
+import {useNavigate} from "react-router-dom";
 
 interface ISignInForm {
   email: string;
@@ -17,22 +18,32 @@ interface ISignInForm {
 
 const SignIn: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const { error, isLoading } = useAppSelector((state) => state.singIn);
+  const {userInfo} = useAppSelector((state) => state.getProfileInfo);
+  const {success} = useAppSelector((state) => state.signUp);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<ISignInForm>({ resolver: yupResolver(signIn), mode: "onBlur" });
+  // useEffect(() => {
+  //   // redirect user to login page if registration was successful
+  //   if (success) navigate('/login')
+  //   // redirect authenticated user to profile screen
+  //   if (userInfo) navigate('/profile')
+  // }, [navigate, userInfo, success])
 
 
-
-  const modalWidndowChange = () => {
+  const modalWindowChange = () => {
     dispatch(setTabIndex(1));
+    // localStorage.clear()
+    dispatch(getProfile())
   };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     dispatch(loginUser(data));
-    dispatch(getProfile());
     reset();
   };
   return (
@@ -40,7 +51,7 @@ const SignIn: React.FC = () => {
       <h1>Hello</h1>
       <p>
         Sign in to NFT-Store or
-        <button onClick={() => modalWidndowChange()}>create an account</button>
+        <button onClick={() => modalWindowChange()}>create an account</button>
       </p>
 
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>

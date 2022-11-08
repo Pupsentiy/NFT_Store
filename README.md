@@ -1,12 +1,12 @@
 # 🛠 Cтек:
 
 ## 🔥 Frontend:
- **React**
- **TypeScript**
- **Redux-Toolkit**
- **SASS**
+- **React**
+- **TypeScript**
+- **Redux-Toolkit**
+- **SASS**
 
 ## 🔥 Backend: 
-**NodeJs**
-**Express**
-**PostgreSQL**
+- **NodeJs**
+- **Express**
+- **PostgreSQL**

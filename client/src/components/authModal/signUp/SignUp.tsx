@@ -28,7 +28,7 @@ const SignUp: React.FC = () => {
     mode: "onBlur",
   });
 
-  const modalWidndowChange = () => {
+  const modalWindowChange = () => {
     dispatch(setTabIndex(0));
   };
 
@@ -44,7 +44,7 @@ const SignUp: React.FC = () => {
       <h1>Create account</h1>
       <p>
         Already have an account?
-        <button onClick={() => modalWidndowChange()}>Sign in</button>
+        <button onClick={() => modalWindowChange()}>Sign in</button>
       </p>
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>

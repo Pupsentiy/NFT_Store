@@ -6,7 +6,7 @@ import { SignUp } from "../types";
 
 const initialState: SignUp = {
   isLoading: false,
-  succes: false,
+  success: false,
   error: { message: "" },
 };
 
@@ -21,7 +21,7 @@ const signUpSlice = createSlice({
     [registerUser.fulfilled.type]: (state, action) => {
       // state.currentUser = action.payload;
       state.error = action.payload;
-      state.succes = true;
+      state.success = true;
       state.isLoading = false;
       // console.log(action,'fulfiled')
     },

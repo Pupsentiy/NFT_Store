@@ -15,7 +15,7 @@ export type AuthError = {
 
 export interface SignUp {
   isLoading: boolean;
-  succes: boolean;
+  success: boolean;
   error: AuthError;
 }
 
@@ -27,7 +27,6 @@ export interface SignIn {
   isLoading: boolean;
   isAuth: boolean;
   error: AuthError;
-  userToken:string | null;
 }
 export type userInfo = { 
   userInfo: object;
