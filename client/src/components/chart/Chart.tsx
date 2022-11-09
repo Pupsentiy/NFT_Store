@@ -7,7 +7,7 @@ interface DoughnutProps {
   data: ChartData<"polarArea">;
 }
 
-const Cahrt: React.FC = () => {
+const Chart: React.FC = () => {
   return (
     <>
       <PolarArea
@@ -34,4 +34,4 @@ const Cahrt: React.FC = () => {
   );
 };
 
-export default Cahrt;
+export default Chart;

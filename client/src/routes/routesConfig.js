@@ -3,6 +3,8 @@ import Discover from "../pages/discover/Discover";
 import Home from "../pages/home/Home";
 import NotFound from "../pages/notFound/NotFound";
 import Profile from "../pages/profile/Profile";
+import SignIn from "../pages/auth/signIn/SignIn";
+import SignUp from "../pages/auth/signUp/SignUp";
 
 const routesConfig = [
   {
@@ -18,8 +20,12 @@ const routesConfig = [
     element: <NotFound />,
   },
   {
-    path: "/auth",
-    element: <Auth />,
+    path: "/auth/signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/auth/signup",
+    element: <SignUp />,
   },
   {
     path: "/profile",

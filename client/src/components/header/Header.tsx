@@ -1,11 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
-import { useAppSelector } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { useEffect } from "react";
+import { getProfile } from "../../redux/auth/getProfile/asyncActions";
+import { setLogout } from "../../redux/auth/getProfile/slice";
+import { authorizationHeaders } from "../../api/fetchWrappers";
 
 const Header: React.FC = () => {
   const { isAuth } = useAppSelector((state) => state.singIn);
+  const dispatch = useAppDispatch();
+  const { userInfo, isLoading } = useAppSelector(
+    (state) => state.getProfileInfo
+  );
+  // const userToken = authorizationHeaders.Authorization
+  useEffect(() => {
+      dispatch(getProfile());
+  }, []);
 
+  const handlelogout = () => {
+    dispatch(setLogout());
+  };
   return (
     <header className="container">
       <div className="custom__header">
@@ -43,17 +58,17 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="header__connectWallet">
-          {isAuth === true ? 
-          <div>
-            
-          </div>
-        :
-        <NavLink to="/auth">
-            <button className="wallet">Sign in</button>
-          </NavLink>
-        }
-
-          
+          {userInfo ? (
+            <NavLink to="/">
+              <button className="wallet" onClick={handlelogout}>
+                Logout
+              </button>
+            </NavLink>
+          ) : (
+            <NavLink to="/auth/signin">
+              <button className="wallet">Sign in</button>
+            </NavLink>
+          )}
         </div>
       </div>
     </header>

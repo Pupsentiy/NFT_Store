@@ -11,7 +11,7 @@ async function http(path: string, config: RequestInit) {
       console.error(response.statusText);
     }
     if (response.statusText === 'Unauthorized') {
-      window.location.href = '/auth';
+      // window.location.href = '/auth/signIn';
     }
     if (response.status === 401) {
       return;
@@ -28,7 +28,7 @@ async function http(path: string, config: RequestInit) {
 const headers = {
   'Content-Type': 'application/json',
 };
-const authorizationHeaders = { Authorization: `Bearer ${localStorage.getItem('accessToken')}` };
+export const authorizationHeaders =  { Authorization:`${localStorage.getItem('accessToken')}` };
 console.log(authorizationHeaders, 'authorizationHeaders')
 
 export async function httpQuery<U>(method: string, path: string, body?: U) {

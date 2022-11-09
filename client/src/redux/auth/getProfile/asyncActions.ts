@@ -5,10 +5,9 @@ import { httpQuery } from "../../../api/fetchWrappers";
 
 export const getProfile = createAsyncThunk(
   `${API.profileUser}`,
-  async (args, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await httpQuery('GET',`${API.profileUser}`);
-      return response;
+      return await httpQuery("GET", `${API.profileUser}`);
     } catch (e: any) {
       if (e.response && e.response.data.message) {
         return rejectWithValue(e.response.data.message);

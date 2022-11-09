@@ -28,7 +28,14 @@ export interface SignIn {
   isAuth: boolean;
   error: AuthError;
 }
-export type userInfo = { 
-  userInfo: object;
+export interface getProfileInfo  {
+  userInfo: userInfo | null;
   isLoading: boolean;
+  error:string
+}
+
+export type userInfo ={
+  id:number;
+  firstName:string;
+  avatar:string | null;
 }

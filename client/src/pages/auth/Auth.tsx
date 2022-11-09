@@ -1,15 +1,15 @@
 import React from "react";
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
 import { useAppSelector } from "../../redux/store";
-import SignIn from "../../components/authModal/signIn/SignIn";
-import SignUp from "../../components/authModal/signUp/SignUp";
+import SignIn from "./signIn/SignIn";
 import { Link } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
+import SignUp from "./signUp/SignUp";
 
 const Auth: React.FC = () => {
   const { tabIndex } = useAppSelector((state) => state.changeModal);
   const { isLoading } = useAppSelector((state) => state.signUp);
-  const tabPanel: JSX.Element[] = [<SignIn />, <SignUp />];
+  const tabPanel: JSX.Element[] = [<SignIn />, <SignUp/>];
 
   return (
     <div className="wrapper">
@@ -18,7 +18,7 @@ const Auth: React.FC = () => {
         <p className="logo__text">NFT Store</p>
       </Link>
       {isLoading !== true ? (
-        <div className="paper">{tabPanel[tabIndex]}</div>
+        <div className="paper"></div>
       ) : (
         <Loader />
       )}

@@ -2,10 +2,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getProfile } from "./asyncActions";
-import { userInfo } from "../types";
+import { getProfileInfo } from "../types";
 
-const initialState: any = {
-   userInfo:null,
+
+
+const initialState: getProfileInfo = {
+   userInfo:{
+    id:0,
+    firstName:'',
+    avatar:null,
+   },
    isLoading:false,
    error:''
 };
@@ -13,20 +19,28 @@ const initialState: any = {
 const profileUserSlice = createSlice({
   name: "getProfileInfo",
   initialState,
-  reducers: {},
+  reducers: {
+    setLogout: (state) => {
+      localStorage.clear() // delete token from storage
+      state.isLoading = false
+      state.userInfo = null
+      state.error = ''
+    },
+  },
   extraReducers: {
     [getProfile.pending.type]: (state) => {
       state.isLoading = true
     },
-    [getProfile.fulfilled.type]: (state, action) => {
-      state.userInfo = action.payload;
+    [getProfile.fulfilled.type]: (state, {payload}) => {
+      state.userInfo = payload;
       state.isLoading = false
-      state.error = action.payload
+      state.error = payload
     },
     [getProfile.rejected.type]: (state) => {
       state.isLoading = true
     },
   },
 });
+export const { setLogout } = profileUserSlice.actions;
 
 export default profileUserSlice.reducer;

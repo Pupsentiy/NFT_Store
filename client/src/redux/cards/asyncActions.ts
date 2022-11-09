@@ -9,7 +9,7 @@ export const fetchItems = createAsyncThunk<
   SearchCardsParams
 >("cards/fetchCardsStatus", async (params) => {
   const { currentPage, category, search,order ,sortBy} = params;
-  console.log(params, 4444);
+  // console.log(params, 4444);
   
   const { data } = await axios.get<CardsSliceState[]>(
     `https://62e42974c6b56b45118311cb.mockapi.io/cards`,
