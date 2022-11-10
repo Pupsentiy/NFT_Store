@@ -6,6 +6,7 @@ import git from "../../assets/icons/github-1.svg";
 import inst from "../../assets/icons/instagram.svg";
 
 import "./Footer.scss";
+import Logo from "../logo/Logo";
 
 const Footer: React.FC = () => {
   const handlerScrollUp = () => {
@@ -21,10 +22,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="footer__wrapper">
           <div className="footer__aboutUs">
-            <Link to="/" className="footer__logo" onClick={handlerScrollUp}>
-              <img src={pandaLogo} alt="logo" />
-              <p className="logo__text">NFT Store</p>
-            </Link>
+           <Logo handlerScrollUp={handlerScrollUp}/>
             <p className="footer__discription">
               The world's first and largest digital marketplace for crypto
               collectibles and non-fungible tokens (NFTs). Buy, sell, and

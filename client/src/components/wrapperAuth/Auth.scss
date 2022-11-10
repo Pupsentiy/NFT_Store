@@ -1,18 +1,7 @@
 @import "../../styles/mixins.scss";
 
-.wrapper {
-  position: fixed;
-  height: 100vh;
-  z-index: 1000;
-  width: 100%;
-  background-color: #fff;
-  top: 0;
-  left: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #000;
-  padding-top: 30px;
+.containerAuth {
+@include containerAuth;
 
   a{
     display: flex;
@@ -20,7 +9,6 @@
   }
 
   p {
-    @include text-logo;
     color: #000;
     margin: 0;
     button {
@@ -33,15 +21,9 @@
     }
   }
 
-  .paper {
-    text-align: center;
-    border: 2px solid #1e50ff;
-    padding: 20px;
-    border-radius: 5px;
-    width: 275px;
-    p {
-      font-size: 12px;
-    }
+  .containerAuth-content {
+    @include containerAuth-content; 
+    
     .wrapper-form {
       display: flex;
       flex-direction: column;

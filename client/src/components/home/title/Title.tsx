@@ -1,11 +1,18 @@
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
 import "./Title.scss";
 import linkup from "../../../assets/icons/discover_logo/linkup.svg";
 import { useAppSelector } from "../../../redux/store";
 import { Cards } from "../../../redux/cards/types";
 import { Platforms, platforms } from "../../../mockDate/mockPlatforms";
 import { SceletonPicture } from "./SceletonPicture";
+import { BackgroundImgOrnametStyle, ContainerEl, H2, NavLinkEL, PTextEl, SectionEl } from "../../../styles/global.styled";
 
+export const TitleEl = styled.title`
+display: flex;
+justify-content: space-between;
+`
 const Title: React.FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
   const picture: Cards[] = items
@@ -18,26 +25,22 @@ const Title: React.FC = () => {
   ));
 
   return (
-    <section className="title">
-      <div className="container">
-        <div className="ornament"></div>
-        <div className="title__title">
-          <div className="title-text">
-            <h2> Discover a New Era of Crypto Currency</h2>
-          </div>
-          <div className="title__discription">
-            <p>
+    <SectionEl className="title">
+      <ContainerEl className="container">
+        <BackgroundImgOrnametStyle top={'374px'} right={'0'}/>
+        <TitleEl>
+            <H2 margin={'0 20px 0 0'}> Discover a New Era of Crypto Currency</H2>
+            <PTextEl display={'flex'} flexDirectin={'column'}>
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
               Exercitation veniam consequat sunt nostrud amet.
-            </p>
-            <NavLink className="start__link" to="#">
+              <NavLinkEL to="#" display={'none'}>
               Get Started
               <img src={linkup} alt="img" />
-            </NavLink>
-          </div>
-        </div>
-      </div>
+            </NavLinkEL>
+            </PTextEl>
+        </TitleEl>
+      </ContainerEl>
       <div className="title__picture">
         {status === "loading"
           ? sceletons
@@ -69,7 +72,7 @@ const Title: React.FC = () => {
             ))}
         </ul>
       </nav>
-    </section>
+    </SectionEl>
   );
 };
 

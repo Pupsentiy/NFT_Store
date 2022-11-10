@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../../redux/store";
 import { registerUser } from "../../../redux/auth/signUp/asyncActions";
 import { signUpShema } from "../../../utils/validation";
 
-import "../../../pages/auth/Auth.scss";
+import "../../../components/wrapperAuth/Auth.scss";
 
 interface ISignUpForm {
   firstName: string;
