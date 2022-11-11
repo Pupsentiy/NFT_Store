@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
+
 import { authorizationHeaders } from '../../api/fetchWrappers'
-import CreateNft from '../../components/home/createNft/CreateNft'
-import LiveAuctions from '../../components/home/liveAuctions/LiveAuctions'
-import Title from '../../components/home/title/Title'
 import { getProfile } from '../../redux/auth/getProfile/asyncActions'
 import { fetchItems } from '../../redux/cards/asyncActions'
 import { useAppDispatch, useAppSelector  } from '../../redux/store'
-import './Home.scss'
+
+import CreateNft from './components/createNft/CreateNft'
+import BlockTitle from './components/BlockTitle/BlockTitle'
+import LiveAuctions from './components/liveAuctions/LiveAuctions'
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -40,7 +41,7 @@ const Home: React.FC = () => {
 
   return (
     <main>   
-    <Title/>
+    <BlockTitle/>
     <CreateNft/>
     <LiveAuctions/>
     </main>

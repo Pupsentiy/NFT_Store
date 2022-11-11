@@ -71,43 +71,48 @@ textarea:focus, input:focus{
 }
 `;
 
-export const H2 = styled.h2<{margin?:string}>`
+export const H2 = styled.h2<{ margin?: string }>`
   font-size: 64px;
   font-weight: 700;
   line-height: 100%;
-  margin: ${(props) => props.margin || '0'};
+  margin: ${(props) => props.margin || "0"};
 `;
 
-export const H3 = styled.h3`
+export const H3 = styled.h3<{ textAlign?: string }>`
   font-weight: 700;
   font-size: 48px;
   line-height: 89%;
-  margin: 0px;
+  text-align: ${(props) => props.textAlign || "left"};
 `;
-export const H5 = styled.h5`
+export const H5 = styled.h5<{marginTop?:string;}>`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  margin: 0px;
-  margin-bottom: 24px;
+  margin-top:${props => props.marginTop || '0'}
 `;
 
 export const H6 = styled.h6`
   font-weight: 700;
   font-size: 16px;
   line-height: 100%;
-  margin: 0px;
 `;
-export const PTextEl = styled.p<{display?:string;flexDirectin?:string}>`
+export const PDiscriptionEl = styled.p<{
+  display?: string;
+  flexDirectin?: string;
+  textAlign?: string;
+  marginTop?:string;
+}>`
   color: #adb9c7;
   font-size: 14px;
   line-height: 32px;
   font-weight: 400;
-  display:${props => props.display || '0'};
-  flex-direction:${props => props.flexDirectin || '0'};
+  text-align:${(props) => props.textAlign || "left"};
+  display: ${(props) => props.display || "block"};
+  flex-direction: ${(props) => props.flexDirectin || "0"};
+  margin-top:${props => props.marginTop || '0'};
 `;
 
-export const NavLinkEL = styled(NavLink)<{display?:string}>`
+export const NavLinkEL = styled(NavLink)<{ display?: string }>`
   font-size: 16px;
   font-weight: 600;
   line-height: 133%;
@@ -122,7 +127,7 @@ export const NavLinkEL = styled(NavLink)<{display?:string}>`
   &.active {
     color: #ffffff;
     &::before {
-      display:${props => props.display || 'block'};
+      display: ${(props) => props.display || "block"};
       top: 20px;
       left: 0;
       position: absolute;
@@ -133,17 +138,22 @@ export const NavLinkEL = styled(NavLink)<{display?:string}>`
   }
 `;
 
-export const BackgroundImgOrnametStyle = styled.div<{top?:string; right?:string;}>`
-top:${props => props.top || '0'};
-right:${props => props.right || '0'};
-width: 638px;
-height: 587px;
-border-radius: 50%;
-background: rgba(30, 80, 255, 0.5);
-filter: blur(300px);
-position:absolute;
-z-index:-1;
-`
+export const BackgroundImgOrnametStyle = styled.div<{
+  top?: string;
+  right?: string;
+  left?:string;
+}>`
+  top: ${(props) => props.top || "0"};
+  right: ${(props) => props.right || "0"};
+  left:${props => props.left || '0'};
+  width: 638px;
+  height: 587px;
+  border-radius: 50%;
+  background: rgba(30, 80, 255, 0.5);
+  filter: blur(300px);
+  position: absolute;
+  z-index: -1;
+`;
 
 export const ContainerEl = styled.div`
   max-width: 1200px;
@@ -176,6 +186,38 @@ export const ButtonEl = styled.button`
 `;
 
 export const SectionEl = styled.section`
-position:relative;
-margin-top:120px;
-`
+  position: relative;
+  margin-top: 120px;
+`;
+
+export const Flex = styled.div<{
+  alignItems?: string;
+  justifyContent?: string;
+  marginTop?: string;
+  flexDirection?:string;
+  width?:string;
+}>`
+  width:${props => props.width || 'auto'};
+  display: flex;
+  justify-content: ${(props) => props.justifyContent || "center"};
+  align-items: ${(props) => props.alignItems || "left"};
+  margin-top: ${(props) => props.marginTop || "0"};
+  flex-direction:${props => props.flexDirection || 'row'}
+`;
+
+export const WrapperImg = styled.picture<{width?:string;height?:string;}>`
+  width: ${props => props.width || 'auto'};
+  height: ${props => props.height || 'auto'};;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-item:center;
+`;
+
+export const Img = styled.img<{ borderRadius?: string; width?: string }>`
+  border-radius: ${(props) => props.borderRadius || "8px"};
+  width: ${(props) => props.width || "auto"};
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+`;

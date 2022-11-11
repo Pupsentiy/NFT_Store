@@ -1,12 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import loaderImg from '../../assets/loader/loader.svg'
-import './loader.scss'
+
+export const LoaderEl = styled.img`
+position: absolute;
+top: 40%;
+left: auto;
+`
 
 const Loader:React.FC = () => {
   return (
-    <>
-      <img src={loaderImg} alt="loader" className='loader'/>
-    </>
+      <LoaderEl src={loaderImg} alt="loader"/>
   )
 }
 

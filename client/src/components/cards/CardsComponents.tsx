@@ -1,49 +1,87 @@
 import React from "react";
+import styled from "styled-components";
+
 import { Cards } from "../../redux/cards/types";
-import "./CardsComponents.scss";
+import noAvatar from "../../assets/img/noAvatar.jpg";
+import {
+  ButtonEl,
+  Flex,
+  H6,
+  Img,
+  PDiscriptionEl,
+  WrapperImg,
+} from "../../styles/global.styled";
 
 type CardsProps = {
   value: Cards[];
 };
 
+export const CardContainer = styled.div`
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #272d37;
+  z-index: 5;
+  justify-content: flex-start;
+  break-inside: avoid;
+  margin-bottom: 40px;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+export const BlockCardName = styled.div`
+  text-align: center;
+  margin-top: 24px;
+  width: 325px;
+  height: 100%;
+`;
+export const WrapperAvatar = styled.div`
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+`;
+
+export const PriceEl = styled.div`
+  font-weight: 600;
+  text-align: end;
+  width: 100%;
+  margin-top: 10px;
+`;
 const CardsComponents: React.FC<CardsProps> = ({ value }) => {
+  const editBrokenAvatars = value.map((e) =>
+    e.avatar.includes("default-avatar") ? { ...e, avatar: noAvatar } : e
+  );
   return (
     <>
-      {value &&
-        value.map((item: Cards, i: number) => (
-          <div className="CardsComponents__card" key={i}>
-            <div className="CardsComponents__img-wrapper">
-              <img
-                src={item.img}
-                alt="avatar"
-                className="CardsComponents__avatar"
-              />
-              <div className="CardsComponents__backround-btn-like">
-                {/* <img src="" alt="like" /> */}
-              </div>
-            </div>
-            <div className="CardsComponents__block-info">
-              <div className="CardsComponents__block-name">
-                <h6 className="CardsComponents__card-name">{item.name}</h6>
-              </div>
-              <div className="CardsComponents__wrapper">
-                <div className="CardsComponents__wrapper-info">
-                  <div className="liveAuctons__owner-wrapper-img">
-                    <img
-                      src={item.avatar}
-                      alt="avatar"
-                      className="CardsComponents__owner-foto"
-                    />
-                  </div>
-                  <p>{item.author}</p>
-                </div>
-                <div className="CardsComponents__wrapper-price">
-                  <span>{item.price.toLocaleString()} $</span>
-                </div>
-              </div>
-            </div>
-            {/* <button className="CardsComponents__btn-buy">Buy</button> */}
-          </div>
+      {editBrokenAvatars &&
+        editBrokenAvatars.map((item: Cards, i: number) => (
+          <CardContainer key={i}>
+            <WrapperImg width={"325px"} height={"325px"}>
+              <Img src={item.img} alt={item.name} />
+            </WrapperImg>
+            <Flex alignItems={"flex-start"} flexDirection={"column"}>
+              <BlockCardName>
+                <H6>{item.name}</H6>
+              </BlockCardName>
+              <Flex
+                width={"100%"}
+                justifyContent={"space-between"}
+                alignItems={"flex-end"}
+                marginTop={"15px"}
+              >
+                <WrapperAvatar>
+                  <Img src={item.avatar} alt={`avatar ${item.author}`} />
+                </WrapperAvatar>
+                <Flex flexDirection={"column"}>
+                  <PDiscriptionEl>{item.author}</PDiscriptionEl>
+                  <PriceEl>{item.price.toLocaleString()} $</PriceEl>
+                </Flex>
+              </Flex>
+            </Flex>
+            {/* <ButtonEl>Buy</ButtonEl> */}
+          </CardContainer>
         ))}
     </>
   );

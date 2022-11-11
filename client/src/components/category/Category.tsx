@@ -3,6 +3,9 @@ import "./Category.scss";
 import { setCategoryInnerHtml } from "../../redux/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import Sort from "../sort/Sort";
+import { Flex } from "../../styles/global.styled";
+
+
 
 const Category: React.FC = () => {
   const { categoryText } = useAppSelector((state) => state.filters);
@@ -24,9 +27,9 @@ const Category: React.FC = () => {
     dispatch(setCategoryInnerHtml(cat));
   }, [categoryText]);
   return (
-    <div className="wrapper-nav">
+    <Flex marginTop={'50px'}>
      <Sort/>
-      <nav className="button-nav">
+      <Flex justifyContent={'space-around'} width={'100%'}>
         {categories &&
           categories.map((item: string, i: number) => (
             <button
@@ -37,8 +40,8 @@ const Category: React.FC = () => {
               {item}
             </button>
           ))}
-      </nav>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 

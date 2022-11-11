@@ -1,12 +1,40 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import pandaLogo from "../../assets/icons/pandaLogo.svg";
+import Logo from "../logo/Logo";
+
 import git from "../../assets/icons/github-1.svg";
 import inst from "../../assets/icons/instagram.svg";
+import {
+  ContainerEl,
+  Flex,
+  H5,
+  PDiscriptionEl,
+} from "../../styles/global.styled";
 
-import "./Footer.scss";
-import Logo from "../logo/Logo";
+
+export const FooterEl = styled.footer`
+  margin-top: 60px;
+  padding-top: 88px;
+  padding-bottom: 50px;
+`;
+export const WrapperAboutUs = styled.div`
+  margin-right: 88px;
+  width: 40%;
+`;
+
+export const BlockSoical = styled.div`
+  margin-top: 24px;
+  img {
+    margin-right: 16px;
+  }
+`;
+export interface IArrSocial {
+  link: string;
+  img: string;
+  alt: string;
+}
 
 const Footer: React.FC = () => {
   const handlerScrollUp = () => {
@@ -17,43 +45,47 @@ const Footer: React.FC = () => {
     });
   };
 
+  const arrSocial: IArrSocial[] = [
+    { link: "https://github.com/Pupsentiy", img: git, alt: "link git" },
+    {
+      link: "https://www.instagram.com/pupsentiy/",
+      img: inst,
+      alt: "link inst",
+    },
+  ];
+
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer__wrapper">
-          <div className="footer__aboutUs">
-           <Logo handlerScrollUp={handlerScrollUp}/>
-            <p className="footer__discription">
+    <FooterEl>
+      <ContainerEl>
+        <Flex justifyContent={"space-between"}>
+          <WrapperAboutUs>
+            <Logo handlerScrollUp={handlerScrollUp} />
+            <PDiscriptionEl marginTop={"24px"}>
               The world's first and largest digital marketplace for crypto
               collectibles and non-fungible tokens (NFTs). Buy, sell, and
               discover exclusive digital items.
-            </p>
-          </div>
-
-          <div className="footer__contact">
-            <h5>Contact</h5>
-            <p className="footer__address">
+            </PDiscriptionEl>
+          </WrapperAboutUs>
+          <div>
+            <H5>Contact</H5>
+            <PDiscriptionEl>
               2715 Ash Dr. San Jose, South Dakota 83475
-            </p>
-            <div className="footer__social">
-              <a
-                href="https://github.com/Pupsentiy"
-                className="footer__social-link"
-              >
-                <img src={git} alt="git" />
-              </a>
-              <a
-                href="https://www.instagram.com/pupsentiy/"
-                className="footer__social-link"
-              >
-                <img src={inst} alt="inst" />
-              </a>
-            </div>
+            </PDiscriptionEl>
+            <BlockSoical>
+              {arrSocial &&
+                arrSocial.map((social: IArrSocial, index: number) => (
+                  <Link key={index} to={social.link}>
+                    <img src={social.img} alt={social.alt} />
+                  </Link>
+                ))}
+            </BlockSoical>
           </div>
-        </div>
-        <p className="reserved">2022 All Right Reserved</p>
-      </div>
-    </footer>
+        </Flex>
+        <PDiscriptionEl marginTop={"24px"}>
+          2022 All Right Reserved
+        </PDiscriptionEl>
+      </ContainerEl>
+    </FooterEl>
   );
 };
 
