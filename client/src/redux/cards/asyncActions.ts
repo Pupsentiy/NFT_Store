@@ -27,5 +27,6 @@ export const fetchItems = createAsyncThunk<
       ),
     }
   );
+
   return data;
 });

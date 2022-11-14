@@ -1,6 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import styled from "styled-components";
 
 // import { setTabIndex } from "../../../redux/auth/changeModal/slice";
 import { useAppDispatch } from "../../../redux/store";
@@ -8,6 +9,7 @@ import { registerUser } from "../../../redux/auth/signUp/asyncActions";
 import { signUpShema } from "../../../utils/validation";
 
 import "../../../components/wrapperAuth/Auth.scss";
+import { NavLinkEL } from "../../../styles/global.styled";
 
 interface ISignUpForm {
   firstName: string;
@@ -28,15 +30,10 @@ const SignUp: React.FC = () => {
     mode: "onBlur",
   });
 
-  const modalWindowChange = () => {
-    // dispatch(setTabIndex(0));
-  };
-
   const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
     dispatch(registerUser(data));
     console.log(data, "submit");
     reset();
-    // dispatch(setTabIndex(0));
   };
 
   return (
@@ -44,7 +41,7 @@ const SignUp: React.FC = () => {
       <h1>Create account</h1>
       <p>
         Already have an account?
-        <button onClick={() => modalWindowChange()}>Sign in</button>
+        <NavLinkEL to='/auth/signin' textDecoration='underline' color='#1e50ff' marginleft='7px'>Sign in</NavLinkEL>
       </p>
       <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
         <label>

@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useEffect } from "react";
+import styled from "styled-components";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginUser } from "../../../redux/auth/singIn/asyncActions";
@@ -12,13 +13,33 @@ import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
 import { Link, useNavigate } from "react-router-dom";
 import { authorizationHeaders } from "../../../api/fetchWrappers";
 import Loader from "../../../components/loader/Loader";
-import pandaLogo from "../../../assets/icons/pandaLogo.svg";
 import Logo from "../../../components/logo/Logo";
+import {
+  ContainerAuthEl,
+  H3,
+  NavLinkEL,
+  PDiscriptionEl,
+} from "../../../styles/global.styled";
+import Input from "../../../components/input/Input";
+
+export const ContainerContetnEl = styled.div`
+  text-align: center;
+  border: 2px solid #1e50ff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 275px;
+`;
 
 interface ISignInForm {
   email: string;
   password: string;
 }
+
+export const WrapperForm = styled.form`
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+`
 
 const SignIn: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -41,10 +62,6 @@ const SignIn: React.FC = () => {
   //   if (userInfo) navigate('/profile')
   // }, [navigate, userInfo, success])
 
-  const modalWindowChange = () => {
-    dispatch(setTabIndex(1));
-    // localStorage.clear()
-  };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     dispatch(loginUser(data));
     reset();
@@ -55,39 +72,33 @@ const SignIn: React.FC = () => {
   //     navigate('/profile')
   //   }
   // }, [navigate, userToken])
-  return (
-    <div className="containerAuth">
-        <Logo/>
-      <div className="containerAuth-content">
-        <h1>Hello</h1>
-        <p>
-          Sign in to NFT-Store or
-          <button onClick={modalWindowChange}>create an account</button>
-        </p>
 
-        <form className="wrapper-form" onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Email
-            <input type="email" {...register("email")} />
-            {errors?.email && (
-              <div className="errors">
-                <p>{errors.email.message}</p>
-              </div>
-            )}
-          </label>
-          <label>
-            Password
-            <input type="password" {...register("password")} />
-            {errors?.password && (
-              <div className="errors">
-                <p>{errors.password.message}</p>
-              </div>
-            )}
-          </label>
+  const dataLoginInput = [{label:'Email',nametype:'email',name:'email',error:errors.email?.message,register:{register}},{label:'Password',type:'password',name:'password',error:errors.password?.message},
+
+]
+  return (
+    <ContainerAuthEl>
+      <Logo flexDirection={'column'} color='#000'/>
+      <ContainerContetnEl className="containerAuth-content">
+        <H3 textAlign="center">Hello</H3>
+        <PDiscriptionEl color='#000'>
+          Sign in to NFT-Store or
+          <NavLinkEL to="/auth/signup" textDecoration='underline' color='#1e50ff' marginleft='7px'>create an account</NavLinkEL>
+        </PDiscriptionEl>
+        <WrapperForm  onSubmit={handleSubmit(onSubmit)}>
+          {dataLoginInput && dataLoginInput.map((item:any,i:number) => 
+          <label key={i}>
+          {item.label}
+          <Input  {...item} />
+            <div className="errors">
+              <p>{item.error}</p>
+            </div>
+        </label>
+          )}
           <button type="submit">Continue</button>
-        </form>
-      </div>
-    </div>
+        </WrapperForm>
+      </ContainerContetnEl>
+    </ContainerAuthEl>
   );
 };
 

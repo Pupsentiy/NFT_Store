@@ -34,7 +34,7 @@ const LiveAuctions: React.FC = () => {
             <NavLinkEL to="/discover">Get Started</NavLinkEL>
           </ButtonEl>
         </Flex>
-        <Flex marginTop={"56px"}>
+        <Flex marginTop="56px" justifyContent='space-between'>
           {status === "loading" ? (
             sceletonsCards
           ) : (

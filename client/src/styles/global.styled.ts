@@ -78,17 +78,18 @@ export const H2 = styled.h2<{ margin?: string }>`
   margin: ${(props) => props.margin || "0"};
 `;
 
-export const H3 = styled.h3<{ textAlign?: string }>`
+export const H3 = styled.h3<{ textAlign?: string; marginTop?: string }>`
   font-weight: 700;
   font-size: 48px;
   line-height: 89%;
   text-align: ${(props) => props.textAlign || "left"};
+  margin-top: ${(props) => props.marginTop || "0"};
 `;
-export const H5 = styled.h5<{marginTop?:string;}>`
+export const H5 = styled.h5<{ marginTop?: string }>`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  margin-top:${props => props.marginTop || '0'}
+  margin-top: ${(props) => props.marginTop || "0"};
 `;
 
 export const H6 = styled.h6`
@@ -100,29 +101,36 @@ export const PDiscriptionEl = styled.p<{
   display?: string;
   flexDirectin?: string;
   textAlign?: string;
-  marginTop?:string;
+  marginTop?: string;
+  color?: string;
 }>`
-  color: #adb9c7;
+  color: ${(props) => props.color || "#fff"};
   font-size: 14px;
   line-height: 32px;
   font-weight: 400;
-  text-align:${(props) => props.textAlign || "left"};
+  text-align: ${(props) => props.textAlign || "left"};
   display: ${(props) => props.display || "block"};
   flex-direction: ${(props) => props.flexDirectin || "0"};
-  margin-top:${props => props.marginTop || '0'};
+  margin-top: ${(props) => props.marginTop || "0"};
 `;
 
-export const NavLinkEL = styled(NavLink)<{ display?: string }>`
+export const NavLinkEL = styled(NavLink)<{
+  display?: string;
+  textDecoration?: string;
+  color?: string;
+  marginleft?:string;
+}>`
   font-size: 16px;
   font-weight: 600;
   line-height: 133%;
-  text-decoration: none;
-  color: #8f9ca9;
+  margin-left:${props => props.marginleft || '0'};
+  text-decoration: ${(props) => props.textDecoration || "none"};
+  color: ${props => props.color || '#8f9ca9'};
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   position: relative;
   &:hover {
-    color: #ffffff;
+    color: ${props => props.color || '#fff'};
   }
   &.active {
     color: #ffffff;
@@ -141,11 +149,11 @@ export const NavLinkEL = styled(NavLink)<{ display?: string }>`
 export const BackgroundImgOrnametStyle = styled.div<{
   top?: string;
   right?: string;
-  left?:string;
+  left?: string;
 }>`
   top: ${(props) => props.top || "0"};
   right: ${(props) => props.right || "0"};
-  left:${props => props.left || '0'};
+  left: ${(props) => props.left || "auto"};
   width: 638px;
   height: 587px;
   border-radius: 50%;
@@ -160,6 +168,21 @@ export const ContainerEl = styled.div`
   margin: 0 auto;
   min-height: 100%;
   padding: 0 30px;
+`;
+
+export const ContainerAuthEl = styled.div`
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+  width: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  padding-top: 30px;
 `;
 
 export const ButtonEl = styled.button`
@@ -194,24 +217,24 @@ export const Flex = styled.div<{
   alignItems?: string;
   justifyContent?: string;
   marginTop?: string;
-  flexDirection?:string;
-  width?:string;
+  flexDirection?: string;
+  width?: string;
 }>`
-  width:${props => props.width || 'auto'};
+  width: ${(props) => props.width || "auto"};
   display: flex;
   justify-content: ${(props) => props.justifyContent || "center"};
   align-items: ${(props) => props.alignItems || "left"};
   margin-top: ${(props) => props.marginTop || "0"};
-  flex-direction:${props => props.flexDirection || 'row'}
+  flex-direction: ${(props) => props.flexDirection || "row"};
 `;
 
-export const WrapperImg = styled.picture<{width?:string;height?:string;}>`
-  width: ${props => props.width || 'auto'};
-  height: ${props => props.height || 'auto'};;
+export const WrapperImg = styled.picture<{ width?: string; height?: string }>`
+  width: ${(props) => props.width || "auto"};
+  height: ${(props) => props.height || "auto"};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item:center;
+  align-item: center;
 `;
 
 export const Img = styled.img<{ borderRadius?: string; width?: string }>`

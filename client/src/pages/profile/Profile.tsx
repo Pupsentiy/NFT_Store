@@ -1,33 +1,72 @@
 import React, { useEffect } from "react";
-import noFoto from "../../assets/img/noFoto.png";
-import camera from "../../assets/icons/photo_camera_white_24dp.png";
-import "./Profile.scss";
+import styled from "styled-components";
+
 import Chart from "../../components/chart/Chart";
+
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 
+import { ContainerEl, Flex, H2, H3, H6, Img } from "../../styles/global.styled";
+
+import noFoto from "../../assets/img/noFoto.png";
+import camera from "../../assets/icons/photo_camera_white_24dp.png";
+
+export const BlockAvatar = styled.div`
+  margin-right:50px;
+  width:250px;
+  height:250px;
+  input {
+    display: none;
+  }
+`;
+export const ButtonLoadImg = styled.label`
+  transition: opacity 0.2s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  background-color: rgba(32, 33, 36, 0.6);
+  display: flex;
+  justify-content: center;
+
+  img {
+    height: 100%;
+    opacity: 0.8;
+    width: 24px;
+  }
+`;
+export const WrapperAvatar = styled.picture`
+  position: relative;
+`;
+
 const Profile: React.FC = () => {
-  const { userInfo,isLoading } = useAppSelector((state) => state.getProfileInfo);
+  const { userInfo, isLoading } = useAppSelector(
+    (state) => state.getProfileInfo
+  );
   const dispatch = useAppDispatch();
- 
+
   return (
-    <div className="profile">
-      <div className="container">
-        <div className="profile__info_full">
-          <div className="profile__block-avatar">
-            <label htmlFor="img" className="profile__label-img">
+    <ContainerEl>
+      <Flex marginTop='50px'>
+        <BlockAvatar>
+          <WrapperAvatar>
+            <Img
+              src={!userInfo?.avatar ? noFoto : userInfo?.avatar}
+              alt="avatar"
+              className="avatar"
+            />
+            <ButtonLoadImg htmlFor="img">
               <img src={camera} alt="loadButton" />
-            </label>
+            </ButtonLoadImg>
             <input type="file" id="img" accept="image/*" />
-            <div className="wrapper-avatar">
-              <img src={!userInfo?.avatar ? noFoto : userInfo?.avatar}  alt="avatar" className="avatar" />
-              <h1>{userInfo ? userInfo?.firstName : null}</h1>
-            </div>
-          </div>
-          <div className="profile__block-chart">{/* <Chart/> */}</div>
-        </div>
-      </div>
-    </div>
+          </WrapperAvatar>
+          <H3 textAlign="center" marginTop="10px">
+            {userInfo ? userInfo?.firstName : null}
+          </H3>
+        </BlockAvatar>
+        {/* <div className="profile__block-chart"><Chart/></div> */}
+      </Flex>
+    </ContainerEl>
   );
 };
 

@@ -11,6 +11,7 @@ import {
   PDiscriptionEl,
   WrapperImg,
 } from "../../styles/global.styled";
+import axios from "axios";
 
 type CardsProps = {
   value: Cards[];
@@ -25,11 +26,6 @@ export const CardContainer = styled.div`
   z-index: 5;
   justify-content: flex-start;
   break-inside: avoid;
-  margin-bottom: 40px;
-  margin-right: 10px;
-  &:last-child {
-    margin-right: 0;
-  }
 `;
 export const BlockCardName = styled.div`
   text-align: center;
@@ -53,6 +49,7 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
   const editBrokenAvatars = value.map((e) =>
     e.avatar.includes("default-avatar") ? { ...e, avatar: noAvatar } : e
   );
+ 
   return (
     <>
       {editBrokenAvatars &&
@@ -80,7 +77,6 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
                 </Flex>
               </Flex>
             </Flex>
-            {/* <ButtonEl>Buy</ButtonEl> */}
           </CardContainer>
         ))}
     </>
@@ -88,3 +84,7 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
 };
 
 export default CardsComponents;
+function getImg(imgPath: any) {
+  throw new Error("Function not implemented.");
+}
+

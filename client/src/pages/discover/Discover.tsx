@@ -1,12 +1,24 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
+
 import CardsComponents from "../../components/cards/CardsComponents";
 import Category from "../../components/category/Category";
 import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
+
 import { fetchItems } from "../../redux/cards/asyncActions";
 import { setCurrentPage } from "../../redux/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import "./Discover.scss";
+
+import { ContainerEl, Flex, H3 } from "../../styles/global.styled";
+
+export const GridEl = styled.div`
+margin-top:60px;
+display: grid;
+grid-template-rows: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 0.7vw;
+`
 
 const Discover: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -40,19 +52,17 @@ const Discover: React.FC = () => {
   };
 
   return (
-    <div className="discover">
-      <div className="container">
-        <div className="discover__header">
-          <h3>Explore Collectibles</h3>
+      <ContainerEl >
+        <Flex flexDirection={'column'} alignItems={'center'} marginTop={'120px'}>
+          <H3>Explore Collectibles</H3>
           <Search />
-        </div>
+        </Flex>
         <Category />
-        <div className="discover__wrapper-cards">
+        <GridEl >
           <CardsComponents value={items} />
-        </div>
+        </GridEl>
         <Pagination currentPage={currentPage} onChangePage={onChangePage} />
-      </div>
-    </div>
+      </ContainerEl>
   );
 };
 
