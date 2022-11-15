@@ -1,21 +1,13 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import SignIn from "./pages/auth/signIn/SignIn";
-import routesConfig from "./routes/routesConfig";
+import { BrowserRouter } from "react-router-dom";
+import InternalRoutes from "./routes/Routes";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        {routesConfig.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-      </Routes>
-      <Footer />
+      <InternalRoutes />
     </BrowserRouter>
   );
-}
+};
+
 export default App;

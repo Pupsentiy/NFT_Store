@@ -5,7 +5,7 @@ import { setCategoryInnerHtml } from "../../redux/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import Sort from "../sort/Sort";
 
-import { ButtonEl, Flex } from "../../styles/global.styled";
+import { Flex } from "../../styles/global.styled";
 
 export const ButtonEll = styled.button`
   width: 100px;

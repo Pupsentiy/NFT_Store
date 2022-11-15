@@ -8,40 +8,30 @@ import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setTabIndex } from "../../../redux/auth/changeModal/slice";
 import { signIn } from "../../../utils/validation";
 
-import "../../../components/wrapperAuth/Auth.scss";
 import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
 import { Link, useNavigate } from "react-router-dom";
 import { authorizationHeaders } from "../../../api/fetchWrappers";
+
 import Loader from "../../../components/loader/Loader";
 import Logo from "../../../components/logo/Logo";
+import Input from "../../../components/input/Input";
+import Button from "../../../components/button/Button";
+
 import {
   ContainerAuthEl,
-  H3,
+  ContainerContetnEl,
+  H5,
   NavLinkEL,
   PDiscriptionEl,
+  WrapperForm,
 } from "../../../styles/global.styled";
-import Input from "../../../components/input/Input";
-
-export const ContainerContetnEl = styled.div`
-  text-align: center;
-  border: 2px solid #1e50ff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 275px;
-`;
 
 interface ISignInForm {
   email: string;
   password: string;
 }
 
-export const WrapperForm = styled.form`
-display: flex;
-flex-direction: column;
-margin-top: 10px;
-`
-
-const SignIn: React.FC = () => {
+const SignIn = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { error, isLoading } = useAppSelector((state) => state.singIn);
@@ -73,29 +63,61 @@ const SignIn: React.FC = () => {
   //   }
   // }, [navigate, userToken])
 
-  const dataLoginInput = [{label:'Email',nametype:'email',name:'email',error:errors.email?.message,register:{register}},{label:'Password',type:'password',name:'password',error:errors.password?.message},
-
-]
   return (
     <ContainerAuthEl>
-      <Logo flexDirection={'column'} color='#000'/>
-      <ContainerContetnEl className="containerAuth-content">
-        <H3 textAlign="center">Hello</H3>
-        <PDiscriptionEl color='#000'>
+      <Logo flexDirection={"column"} color="#000" />
+      <ContainerContetnEl>
+        <H5>Hello</H5>
+        <PDiscriptionEl color="#000" lineHeight="normal" textAlign="center">
           Sign in to NFT-Store or
-          <NavLinkEL to="/auth/signup" textDecoration='underline' color='#1e50ff' marginleft='7px'>create an account</NavLinkEL>
+          <NavLinkEL
+            to="/auth/signup"
+            textDecoration="underline"
+            color="#1e50ff"
+            marginleft="7px"
+          >
+            create an account
+          </NavLinkEL>
         </PDiscriptionEl>
-        <WrapperForm  onSubmit={handleSubmit(onSubmit)}>
-          {dataLoginInput && dataLoginInput.map((item:any,i:number) => 
-          <label key={i}>
-          {item.label}
-          <Input  {...item} />
-            <div className="errors">
-              <p>{item.error}</p>
-            </div>
-        </label>
-          )}
-          <button type="submit">Continue</button>
+        <WrapperForm onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            label="Email"
+            type="email"
+            error={errors.email?.message}
+            register={{ ...register("email") }}
+            //styles
+            marginTop="3px"
+            border="1px solid #adb9c7"
+            borderRadius="5px"
+            fontSize="13px"
+            padding="5px 7px"
+            boxShadow="0 0 3px 2px #1f50ffd2"
+          />
+          <Input
+            label="Password"
+            type="password"
+            error={errors.password?.message}
+            register={{ ...register("password") }}
+            //styles
+            marginTop="3px"
+            border="1px solid #adb9c7"
+            borderRadius="5px"
+            fontSize="13px"
+            padding="5px 7px"
+            boxShadow="0 0 3px 2px #1f50ffd2"
+          />
+          <Button
+            type="submit"
+            label="Continue"
+            //styles
+            borderRadius="5px"
+            background="rgba(30, 80, 255, 0.1019607843)"
+            padding="3px 7px"
+            boxShadow="0px 0px 6px 2px rgb(30 80 255 / 71%)"
+            marginTop="10px"
+            color="#000"
+            fontSize="14px"
+          />
         </WrapperForm>
       </ContainerContetnEl>
     </ContainerAuthEl>

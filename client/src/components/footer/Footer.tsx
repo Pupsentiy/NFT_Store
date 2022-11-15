@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import Logo from "../logo/Logo";
@@ -12,29 +11,9 @@ import {
   H5,
   PDiscriptionEl,
 } from "../../styles/global.styled";
+import { BlockSoical, FooterEl, WrapperAboutUs } from "./Footer.styled";
 
-
-export const FooterEl = styled.footer`
-  margin-top: 60px;
-  padding-top: 88px;
-  padding-bottom: 50px;
-`;
-export const WrapperAboutUs = styled.div`
-  margin-right: 88px;
-  width: 40%;
-`;
-
-export const BlockSoical = styled.div`
-  margin-top: 24px;
-  img {
-    margin-right: 16px;
-  }
-`;
-export interface IArrSocial {
-  link: string;
-  img: string;
-  alt: string;
-}
+import { IArrSocial } from "./Footer.types";
 
 const Footer: React.FC = () => {
   const handlerScrollUp = () => {
@@ -59,7 +38,10 @@ const Footer: React.FC = () => {
       <ContainerEl>
         <Flex justifyContent={"space-between"}>
           <WrapperAboutUs>
-            <Logo handlerScrollUp={handlerScrollUp} />
+            <Logo
+              handlerScrollUp={handlerScrollUp}
+              justifyContent={"flex-start"}
+            />
             <PDiscriptionEl marginTop={"24px"}>
               The world's first and largest digital marketplace for crypto
               collectibles and non-fungible tokens (NFTs). Buy, sell, and

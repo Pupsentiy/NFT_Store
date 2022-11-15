@@ -4,38 +4,17 @@ import styled from "styled-components";
 
 import { useAppDispatch } from "../../redux/store";
 import { setCurrentPage, setSearchValue } from "../../redux/filter/filterSlice";
-
-export const InputSearchElement = styled.input`
-margin-top: 40px;
-border: solid 1px #1e50ff;
-color: #fff;
-font-size: 24px;
-font-weight: 500;
-line-height: 89%;
-background: #1e50ff1a;
-padding: 16px;
-width: 680px;
-border-radius: 16px;
-&:focus {
-  border: solid 1px #1e50ff;
-  -webkit-box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-  -moz-box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-  box-shadow: 0px 0px 16px 11px rgba(30, 80, 255, 0.71);
-}
-&:focus-visible {
-  outline: auto 0px;
-}
-`
+import Input from "../input/Input";
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
-  
+  // const inputRef = useRef<HTMLInputElement>(null);
+
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
-    dispatch(setCurrentPage(1))
+    dispatch(setCurrentPage(1));
   };
 
   const updateSearchValue = useCallback(
@@ -47,12 +26,23 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <InputSearchElement
-        type="text"
+      <Input
+        type="search"
         placeholder="Type your keywords . . ."
-        onChange={onChangeInput}
-        ref={inputRef}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          onChangeInput(event)
+        }
         value={value}
+        //styles
+        marginTop="40px"
+        border="solid 1px #1e50ff"
+        borderRadius="8px"
+        fontSize="24px"
+        background="#1e50ff1a"
+        padding="16px"
+        width="680px"
+        color="#fff"
+        boxShadow="0px 0px 16px 11px rgba(30, 80, 255, 0.71)"
       />
     </>
   );

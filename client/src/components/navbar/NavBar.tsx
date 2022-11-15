@@ -1,22 +1,13 @@
 import React, { FC } from "react";
-import styled from "styled-components";
 
-import { NavLinkEL } from "../../styles/global.styled";
+import { IArrLinks } from "./NavBar.types";
 
-export const NavbarEl = styled.ul`
-  display: flex;
-`;
-export const NavBarItemEl = styled.li`
-  margin:0 16px;
-`;
-
-export const ContainerNavBarEl = styled.nav`
-  margin: 0 15px;
-`;
-interface IArrLinks {
-  to: string;
-  title: string;
-}
+import {
+  ContainerNavBarEl,
+  NavbarEl,
+  NavBarItemEl,
+  NavLinkEL,
+} from "../../styles/global.styled";
 
 const NavBar: FC = () => {
   const arrLinks: IArrLinks[] = [

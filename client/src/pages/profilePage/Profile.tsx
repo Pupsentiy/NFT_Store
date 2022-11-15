@@ -39,7 +39,7 @@ export const WrapperAvatar = styled.picture`
   position: relative;
 `;
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const { userInfo, isLoading } = useAppSelector(
     (state) => state.getProfileInfo
   );

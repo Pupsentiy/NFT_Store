@@ -12,7 +12,7 @@ export const emeilSchema = yup
 
 export const firstNameShema = yup
   .string()
-  .typeError("должно быть строкой")
+  .typeError("must be a string")
   .matches(NAME_REGEXP, "First character must be a letter")
   .required("Please Enter Your Name!");
 

@@ -22,7 +22,7 @@ export const TitleEl = styled.title`
   display: flex;
   justify-content: space-between;
 `;
-export const WrapperCardsEl = styled.div`
+export const WrapperCardsEl = styled.article`
   display: flex;
   justify-content: space-between;
   margin-top: 56px;

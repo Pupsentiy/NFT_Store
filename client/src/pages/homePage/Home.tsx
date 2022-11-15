@@ -9,7 +9,7 @@ import CreateNft from './components/createNft/CreateNft'
 import BlockTitle from './components/BlockTitle/BlockTitle'
 import LiveAuctions from './components/liveAuctions/LiveAuctions'
 
-const Home: React.FC = () => {
+const Home = () =>  {
   const dispatch = useAppDispatch();
   const { categoryText,currentPage, searchValue,sort } = useAppSelector((state) => state.filters);
   const { userInfo,isLoading } = useAppSelector((state) => state.getProfileInfo);
@@ -40,11 +40,11 @@ const Home: React.FC = () => {
  
 
   return (
-    <main>   
+    <>   
     <BlockTitle/>
     <CreateNft/>
     <LiveAuctions/>
-    </main>
+    </>
   )
 }
 

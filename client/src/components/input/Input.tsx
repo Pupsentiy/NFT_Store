@@ -1,23 +1,33 @@
-import React from "react";
-import styled from "styled-components";
+import React, { FC } from "react";
 
-export const InputEl = styled.input`
-  border-radius: 5px;
-  border: 1px solid #adb9c7;
-  outline: none;
-  height: 25px;
-  padding: 3px 7px;
-  line-height: normal;
-  margin-top: 3px;
-  &:focus {
-    border: 1px solid #1e50ff;
-    box-shadow: 0 0 3px 2px #1f50ffd2;
-  }
-`;
+import { IInputProps } from "./Input.types";
 
-const Input = ({label,register,name}:any) => {
-  console.log(register)
-  return <input {...register(name)}/>;
+import { ErrorText, InputEl, LabelEl } from "./Input.styled";
+
+const Input: FC<IInputProps> = (props) => {
+  return (
+    <LabelEl>
+      {props.label}
+      <InputEl
+        type={props.type}
+        placeholder={props.placeholder}
+        {...props.register}
+        onChange={props.onChange}
+        value={props.value}
+        //styles
+        marginTop={props.marginTop}
+        border={props.border}
+        borderRadius={props.borderRadius}
+        fontSize={props.fontSize}
+        background={props.background}
+        padding={props.padding}
+        width={props.width}
+        color={props.color}
+        boxShadow={props.boxShadow}
+      />
+      <ErrorText>{props.error}</ErrorText>
+    </LabelEl>
+  );
 };
 
 export default Input;

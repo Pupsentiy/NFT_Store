@@ -3,33 +3,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
-import { Flex } from "../../styles/global.styled";
+import { Flex, LogoEl, PDiscriptionEl } from "../../styles/global.styled";
+import { ILogoProps } from "./Logo.types";
 
-
-const LogoEl = styled.img`
-  width: 45px;
-  height: 45px;
-`;
-const LogoText = styled.p<{color?:string}>`
-  font-weight: 600;
-  line-height: 32px;
-  margin-left: 10px;
-  color: ${props => props.color || '#fff'};
-  font-size: 16px;
-  width: 100%;
-`;
-export interface ILogoProps {
-  handlerScrollUp?: () => void;
-  flexDirection?: string;
-  color?:string;
-}
-
-const Logo: FC<ILogoProps> = ({ handlerScrollUp, flexDirection,color }) => {
+const Logo: FC<ILogoProps> = ({ handlerScrollUp, flexDirection,color,justifyContent}) => {
   return (
     <Link to="/" onClick={handlerScrollUp}>
-      <Flex alignItems="center" flexDirection={flexDirection}>
+      <Flex alignItems="center" flexDirection={flexDirection} justifyContent={justifyContent}>
         <LogoEl src={pandaLogo} alt="logo" />
-        <LogoText color={color}>NFT Store</LogoText>
+        <PDiscriptionEl color={color} marginLeft='10px' fontSize="16px" fontWeight="600">NFT Store</PDiscriptionEl>
       </Flex>
     </Link>
   );

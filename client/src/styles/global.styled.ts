@@ -1,3 +1,4 @@
+import ReactPaginate from "react-paginate";
 import { NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -71,6 +72,11 @@ textarea:focus, input:focus{
 }
 `;
 
+export const HeaderEl = styled.header`
+  padding-top: 40px;
+`;
+
+
 export const H2 = styled.h2<{ margin?: string }>`
   font-size: 64px;
   font-weight: 700;
@@ -102,16 +108,21 @@ export const PDiscriptionEl = styled.p<{
   flexDirectin?: string;
   textAlign?: string;
   marginTop?: string;
+  marginLeft?:string;
   color?: string;
+  lineHeight?:string
+  fontSize?:string;
+  fontWeight?:string;
 }>`
   color: ${(props) => props.color || "#fff"};
-  font-size: 14px;
-  line-height: 32px;
-  font-weight: 400;
+  font-size:${props => props.fontSize || '14px'};
+  line-height: ${props => props.lineHeight || '32px'};
+  font-weight: ${props => props.fontWeight || '400'};
   text-align: ${(props) => props.textAlign || "left"};
   display: ${(props) => props.display || "block"};
   flex-direction: ${(props) => props.flexDirectin || "0"};
   margin-top: ${(props) => props.marginTop || "0"};
+  margin-left:${props => props.marginLeft || '0'}
 `;
 
 export const NavLinkEL = styled(NavLink)<{
@@ -170,6 +181,12 @@ export const ContainerEl = styled.div`
   padding: 0 30px;
 `;
 
+export const WrapperForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+`;
+
 export const ContainerAuthEl = styled.div`
   position: fixed;
   height: 100vh;
@@ -185,27 +202,12 @@ export const ContainerAuthEl = styled.div`
   padding-top: 30px;
 `;
 
-export const ButtonEl = styled.button`
-  border-radius: 8px;
-  border: solid 1px #1e50ff;
-  padding: 16px 60.5px;
-  font-weight: 600;
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 133%;
-  cursor: pointer;
-  background: transparent;
-  &:active {
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 600;
-    line-height: 133%;
-    background: #1e50ff;
-    border-radius: 8px;
-    -webkit-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-    -moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-    box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
-  }
+export const ContainerContetnEl = styled.div`
+  text-align: center;
+  border: 2px solid #1e50ff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 325px;
 `;
 
 export const SectionEl = styled.section`
@@ -243,4 +245,57 @@ export const Img = styled.img<{ borderRadius?: string; width?: string }>`
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+`;
+
+export const LogoEl = styled.img`
+  width: 45px;
+  height: 45px;
+`;
+
+export const NavbarEl = styled.ul`
+  display: flex;
+`;
+export const NavBarItemEl = styled.li`
+  margin:0 16px;
+`;
+
+export const ContainerNavBarEl = styled.nav`
+  margin: 0 15px;
+`;
+
+export const StyledReactPaginate = styled(ReactPaginate)`
+  .selected {
+    background: #1e50ff;
+    -webkit-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+    -moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+    box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+    border-radius: 8px;
+  }
+  .disabled {
+    opacity: 0.6;
+  }
+  li {
+    display: inline-block;
+    margin: 5px;
+
+    a {
+      border: solid 1px #1e50ff;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 400;
+      width: 45px;
+      height: 45px;
+      text-align: center;
+      line-height: 43px;
+      border-radius: 8px;
+      display: inline-block;
+      cursor: pointer;
+      &:active {
+        background: #1e50ff;
+        -webkit-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+        -moz-box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+        box-shadow: 0px 0px 16px 4px rgba(30, 80, 255, 0.71);
+      }
+    }
+  }
 `;

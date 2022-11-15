@@ -20,7 +20,7 @@ grid-template-columns: 1fr 1fr 1fr;
 grid-gap: 0.7vw;
 `
 
-const Discover: React.FC = () => {
+const Discover = () => {
   const dispatch = useAppDispatch();
   const { items } = useAppSelector((state) => state.card);
   const { categoryText, currentPage, searchValue, sort } = useAppSelector(

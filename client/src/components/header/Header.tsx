@@ -1,24 +1,14 @@
 import { useEffect } from "react";
-import styled from "styled-components";
 
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 import { setLogout } from "../../redux/auth/getProfile/slice";
 import { authorizationHeaders } from "../../api/fetchWrappers";
 
-import { ButtonEl, ContainerEl, NavLinkEL } from "../../styles/global.styled";
+import { ContainerEl, Flex, HeaderEl, NavLinkEL } from "../../styles/global.styled";
 import Logo from "../logo/Logo";
 import NavBar from "../navbar/NavBar";
-
-export const HeaderEl = styled.header`
-  padding-top: 40px;
-`;
-
-export const WrapperHeaderEl = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+import Button from "../button/Button";
 
 const Header: React.FC = () => {
   const { isAuth } = useAppSelector((state) => state.singIn);
@@ -38,19 +28,19 @@ const Header: React.FC = () => {
   return (
     <HeaderEl>
       <ContainerEl>
-        <WrapperHeaderEl>
+        <Flex alignItems="center" justifyContent="space-between">
           <Logo />
           <NavBar />
           {userInfo ? (
             <NavLinkEL to="/">
-              <ButtonEl onClick={handlelogout}>Logout</ButtonEl>
+              <Button type='button' label="Logout" onClick={handlelogout} />
             </NavLinkEL>
           ) : (
             <NavLinkEL to="/auth/signin">
-              <ButtonEl>Sign in</ButtonEl>
+              <Button type='button' label="Sign in" />
             </NavLinkEL>
           )}
-        </WrapperHeaderEl>
+        </Flex>
       </ContainerEl>
     </HeaderEl>
   );
