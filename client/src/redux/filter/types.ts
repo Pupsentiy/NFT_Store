@@ -1,6 +1,6 @@
 export interface FiltersSliseState {
     currentPage:number;
-    categoryText:string;
+    categoryFilter:string;
     searchValue:string;
     sort:Sort;
 }

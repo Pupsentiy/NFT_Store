@@ -1,61 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 
 import { setSort } from "../../redux/filter/filterSlice";
 import { SortPropertyEnum } from "../../redux/filter/types";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 import arrow from "../../assets/icons/discover_logo/arrow.svg";
-
-export const WrapperSortEl = styled.div`
-  position: relative;
-  border: solid 1px #1e50ff;
-  font-size: 14px;
-  border-radius: 8px 8px 0px 0px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  background: rgba(30, 80, 255, 0.1019607843);
-  cursor: pointer;
-  margin-right:10px;
-`;
-
-export const LabelNameEl = styled.span`
-  width: 115px;
-  padding: 16px 0px;
-  text-align:center;
-`;
-export const LabelImg = styled.img<{ open: boolean }>`
-  margin-right: 10px;
-  rotate: ${(props) => (props.open ? '360deg'  : '180deg')};
-`;
-
-export const SortList = styled.ul`
-  position: absolute;
-  z-index: 10;
-  border: solid 2px #1e50ff;
-  top: 50px;
-  width: 137px;
-  cursor: pointer;
-  left: -1px;
-  border-radius: 0px 0px 8px 8px;
-  background: rgb(30 80 255 / 89%);
-`;
-export const ListItem = styled.li`
-  padding: 8px;
-  &:hover {
-    background: rgb(0 21 92);
-  }
-`;
-
-type SortItem = {
-  name: string;
-  sortProperty: SortPropertyEnum;
-};
-
-type PopupClick = MouseEvent & {
-  path: Node[];
-};
+import {
+  LabelImg,
+  LabelNameEl,
+  ListItem,
+  SortList,
+  WrapperSortEl,
+} from "./Sort.styled";
+import { PopupClick, SortItem } from "./Sort.types";
 
 const sortList: SortItem[] = [
   { name: "price (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
@@ -75,7 +32,7 @@ const Sort: React.FC = () => {
     setOpen(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const _event = event as PopupClick;
 
@@ -92,6 +49,7 @@ const Sort: React.FC = () => {
       className="sort-select"
       onClick={() => setOpen(!open)}
       ref={sortRef}
+      open={open}
     >
       <LabelNameEl>{sort.name}</LabelNameEl>
       <LabelImg src={arrow} alt="arrow" open={open} />

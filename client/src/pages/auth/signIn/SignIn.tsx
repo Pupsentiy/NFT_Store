@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginUser } from "../../../redux/auth/singIn/asyncActions";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { setTabIndex } from "../../../redux/auth/changeModal/slice";
 import { signIn } from "../../../utils/validation";
 
 import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
@@ -35,7 +34,7 @@ const SignIn = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { error, isLoading } = useAppSelector((state) => state.singIn);
-  const { userInfo } = useAppSelector((state) => state.getProfileInfo);
+  const { userInfo,userToken } = useAppSelector((state) => state.getProfileInfo);
   const { success } = useAppSelector((state) => state.signUp);
   const {
     register,
@@ -43,7 +42,6 @@ const SignIn = () => {
     formState: { errors },
     reset,
   } = useForm<ISignInForm>({ resolver: yupResolver(signIn), mode: "onBlur" });
-  const userToken = authorizationHeaders.Authorization;
 
   // useEffect(() => {
   //   // redirect user to login page if registration was successful
@@ -54,14 +52,14 @@ const SignIn = () => {
 
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     dispatch(loginUser(data));
-    reset();
+    if (userToken !== null) {
+      navigate('/profile')
+    }
   };
 
-  // useEffect(() => {
-  //   if (userToken !== null) {
-  //     navigate('/profile')
-  //   }
-  // }, [navigate, userToken])
+
+    
+  
 
   return (
     <ContainerAuthEl>

@@ -5,21 +5,28 @@ import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 import { setLogout } from "../../redux/auth/getProfile/slice";
 import { authorizationHeaders } from "../../api/fetchWrappers";
 
-import { ContainerEl, Flex, HeaderEl, NavLinkEL } from "../../styles/global.styled";
 import Logo from "../logo/Logo";
-import NavBar from "../navbar/NavBar";
+import Navigation from "../navigation/Navigation";
 import Button from "../button/Button";
+
+import {
+  ContainerEl,
+  Flex,
+  HeaderEl,
+  NavLinkEL,
+} from "../../styles/global.styled";
 
 const Header: React.FC = () => {
   const { isAuth } = useAppSelector((state) => state.singIn);
   const dispatch = useAppDispatch();
-  const { userInfo, isLoading } = useAppSelector(
+  const { userInfo, userToken, isLoading } = useAppSelector(
     (state) => state.getProfileInfo
   );
 
-  const userToken = authorizationHeaders.Authorization;
   useEffect(() => {
-    dispatch(getProfile());
+    if (userToken) {
+      dispatch(getProfile());
+    }
   }, []);
 
   const handlelogout = () => {
@@ -30,14 +37,14 @@ const Header: React.FC = () => {
       <ContainerEl>
         <Flex alignItems="center" justifyContent="space-between">
           <Logo />
-          <NavBar />
-          {userInfo ? (
-            <NavLinkEL to="/">
-              <Button type='button' label="Logout" onClick={handlelogout} />
+          <Navigation />
+          {userToken ? (
+            <NavLinkEL to="/" display="none">
+              <Button type="button" label="Logout" onClick={handlelogout} />
             </NavLinkEL>
           ) : (
-            <NavLinkEL to="/auth/signin">
-              <Button type='button' label="Sign in" />
+            <NavLinkEL to="/auth/signin" display="none">
+              <Button type="button" label="Sign in" />
             </NavLinkEL>
           )}
         </Flex>

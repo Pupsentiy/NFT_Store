@@ -28,7 +28,7 @@ async function http(path: string, config: RequestInit) {
 const headers = {
   'Content-Type': 'application/json',
 };
-export const authorizationHeaders =  { Authorization:`Bearer ${localStorage.getItem('accessToken')}`};
+export const authorizationHeaders =  { Authorization: `Bearer ${localStorage.getItem('accessToken')}`};
 console.log(authorizationHeaders, 'authorizationHeaders')
 
 export async function httpQuery<U>(method: string, path: string, body?: U) {

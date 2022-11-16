@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ButtonEl = styled.button<{
   borderRadius?: string;
@@ -8,7 +8,12 @@ export const ButtonEl = styled.button<{
   marginTop?: string;
   color?: string;
   fontSize?: string;
+  width?:string;
+  height?:string;
+  active?:boolean;
 }>`
+  width:${props => props.width || 'auto'};
+  height:${props => props.height || 'auto'};
   margin-top: ${(props) => props.marginTop || "0"};
   border-radius: ${(props) => props.borderRadius || "8px"};
   border: solid 1px #1e50ff;
@@ -19,6 +24,8 @@ export const ButtonEl = styled.button<{
   line-height: 133%;
   cursor: pointer;
   background: ${(props) => props.background || "transparent"};
+  -webkit-transition: all 0.10s ease;
+  transition: all 0.10s ease;
   &:active {
     font-size: ${(props) => props.fontSize || "16px"};
     color: #fff;
@@ -33,4 +40,8 @@ export const ButtonEl = styled.button<{
     box-shadow: ${(props) =>
       props.boxShadow || "0px 0px 16px 4px rgba(30, 80, 255, 0.71)"};
   }
+
+  ${props => props.active && css`
+    background: #1e50ff;
+  `}
 `;

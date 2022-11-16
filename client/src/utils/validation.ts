@@ -18,7 +18,7 @@ export const firstNameShema = yup
 
 export const passwordShema = yup
   .string()
-  .typeError("Должно быть строкой")
+  .typeError("must be a string")
   .matches(PASSWORD_REGEXP, "Must be at least one letter and one number")
   .min(8)
   .max(64)

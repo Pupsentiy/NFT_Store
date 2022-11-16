@@ -23,12 +23,12 @@ grid-gap: 0.7vw;
 const Discover = () => {
   const dispatch = useAppDispatch();
   const { items } = useAppSelector((state) => state.card);
-  const { categoryText, currentPage, searchValue, sort } = useAppSelector(
+  const { categoryFilter, currentPage, searchValue, sort } = useAppSelector(
     (state) => state.filters
   );
 
   const getItems = async () => {
-    const category = categoryText !== "All" ? categoryText : "";
+    const category = categoryFilter !== "All" ? categoryFilter : "";
     const search = searchValue;
     const order = sort.sortProperty.includes("-") ? "asc" : "desc";
     const sortBy = sort.sortProperty.replace("-", "");
@@ -45,7 +45,7 @@ const Discover = () => {
 
   useEffect(() => {
     getItems();
-  }, [categoryText, currentPage, searchValue, sort.sortProperty]);
+  }, [categoryFilter, currentPage, searchValue, sort.sortProperty]);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));

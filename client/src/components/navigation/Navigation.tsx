@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { IArrLinks } from "./NavBar.types";
+import { IArrLinks } from "./Navigation.types";
 
 import {
   ContainerNavBarEl,
@@ -9,7 +9,7 @@ import {
   NavLinkEL,
 } from "../../styles/global.styled";
 
-const NavBar: FC = () => {
+const Navigation: FC = () => {
   const arrLinks: IArrLinks[] = [
     { to: "/", title: "Home" },
     { to: "/discover", title: "Discover" },
@@ -22,10 +22,8 @@ const NavBar: FC = () => {
       <NavbarEl>
         {arrLinks &&
           arrLinks.map((link: IArrLinks, index: number) => (
-            <NavBarItemEl className="menu__item" key={index}>
-              <NavLinkEL to={link.to} className="item-link">
-                {link.title}
-              </NavLinkEL>
+            <NavBarItemEl key={index}>
+              <NavLinkEL to={link.to}>{link.title}</NavLinkEL>
             </NavBarItemEl>
           ))}
       </NavbarEl>
@@ -33,4 +31,4 @@ const NavBar: FC = () => {
   );
 };
 
-export default NavBar;
+export default Navigation;

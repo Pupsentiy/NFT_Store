@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getProfile } from "./asyncActions";
 import { getProfileInfo } from "../types";
 
-
+const userToken = localStorage.getItem('accessToken')
+  ? localStorage.getItem('accessToken')
+  : null
 
 const initialState: getProfileInfo = {
    userInfo:{
@@ -12,6 +14,7 @@ const initialState: getProfileInfo = {
     firstName:'',
     avatar:null,
    },
+   userToken,
    isLoading:false,
    error:''
 };

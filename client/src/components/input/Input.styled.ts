@@ -45,5 +45,5 @@ export const LabelEl = styled.label`
 export const ErrorText = styled.p`
   margin-top: 5px;
   font-size: 10px;
-  color: #ff0000;
+  color: #FE5050;
 `;

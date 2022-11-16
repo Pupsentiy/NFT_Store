@@ -28,3 +28,10 @@ export const PriceEl = styled.div`
   width: 100%;
   margin-top: 10px;
 `;
+
+export const WrapperCat = styled.div`
+background:#1e50ff;
+padding:4px;
+margin-bottom:10px;
+border-radius:5px;
+`

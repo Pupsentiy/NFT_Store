@@ -30,6 +30,7 @@ export interface SignIn {
 }
 export interface getProfileInfo  {
   userInfo: userInfo | null;
+  userToken:string | null
   isLoading: boolean;
   error:string
 }

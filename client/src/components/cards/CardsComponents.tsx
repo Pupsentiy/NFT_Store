@@ -15,6 +15,7 @@ import {
   CardContainer,
   PriceEl,
   WrapperAvatar,
+  WrapperCat,
 } from "./CardsComponents.styled";
 
 type CardsProps = {
@@ -44,11 +45,25 @@ const CardsComponents: React.FC<CardsProps> = ({ value }) => {
                 alignItems={"flex-end"}
                 marginTop={"15px"}
               >
-                <WrapperAvatar>
-                  <Img src={item.avatar} alt={`avatar ${item.author}`} />
-                </WrapperAvatar>
+                <Flex flexDirection="column">
+                  <WrapperCat>
+                    <PDiscriptionEl
+                      lineHeight="15px"
+                      textAlign="center"
+                      color="#fff"
+                      fontWeight="600"
+                    >
+                      {item.category}
+                    </PDiscriptionEl>
+                  </WrapperCat>
+                  <WrapperAvatar>
+                    <Img src={item.avatar} alt={`avatar ${item.author}`} />
+                  </WrapperAvatar>
+                </Flex>
                 <Flex flexDirection={"column"}>
-                  <PDiscriptionEl>{item.author}</PDiscriptionEl>
+                  <PDiscriptionEl fontWeight="600" color="#8F9CA9">
+                    {item.author}
+                  </PDiscriptionEl>
                   <PriceEl>{item.price.toLocaleString()} $</PriceEl>
                 </Flex>
               </Flex>

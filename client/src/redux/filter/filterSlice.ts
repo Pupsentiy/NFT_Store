@@ -3,7 +3,7 @@ import { FiltersSliseState, Sort, SortPropertyEnum } from "./types";
 
 const initialState:FiltersSliseState = { 
     currentPage: 1,
-    categoryText: 'All',
+    categoryFilter: 'All',
     searchValue:'',
     sort: {
         name: 'price(DESC)',
@@ -19,7 +19,7 @@ const filterSlice = createSlice ({
             state.currentPage = action.payload
         },
         setCategoryInnerHtml(state, action:PayloadAction<string>) {
-            state.categoryText = action.payload
+            state.categoryFilter = action.payload
         },
         setSearchValue(state,action){
             state.searchValue = action.payload
