@@ -6,9 +6,11 @@ import { IButtonProps } from "./Button.types";
 
 const Button: FC<IButtonProps> = (props) => {
   return (
+
     <ButtonEl
       onClick={props.onClick}
       active={props.active}
+      type={props.type}
       //styles
       background={props.background}
       borderRadius={props.borderRadius}
@@ -20,7 +22,7 @@ const Button: FC<IButtonProps> = (props) => {
       width={props.width}
       height={props.height}
     >
-      {props.label}
+      {props.children}
     </ButtonEl>
   );
 };

@@ -9,11 +9,7 @@ const userToken = localStorage.getItem('accessToken')
   : null
 
 const initialState: getProfileInfo = {
-   userInfo:{
-    id:0,
-    firstName:'',
-    avatar:null,
-   },
+   userInfo:null,
    userToken,
    isLoading:false,
    error:''

@@ -6,12 +6,12 @@ async function http(path: string, config: RequestInit) {
   try {
     const request = new Request(path, config);
     const response = await fetch(request);
-
+    
     if (response.status !== 200 && 201) {
       console.error(response.statusText);
     }
     if (response.statusText === 'Unauthorized') {
-      // window.location.href = '/auth/signIn';
+      window.location.href = '/auth/signIn';
     }
     if (response.status === 401) {
       return;
@@ -62,14 +62,6 @@ export async function authQuery<T, U>(body: T, path: string): Promise<U> {
     body: JSON.stringify(body),
     headers,
   };
-  const inviteSignUpConfig = {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: {
-      ...headers,
-      ...authorizationHeaders,
-    },
-  };
 
-  return await http(`${API.mainPath}${path}`, path === 'pathForAfterInvite' ? inviteSignUpConfig : config);
+  return await http(`${API.mainPath}${path}`, config);
 }

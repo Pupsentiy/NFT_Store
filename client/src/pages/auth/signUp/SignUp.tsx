@@ -117,7 +117,6 @@ const SignUp = () => {
           />
           <Button
             type="submit"
-            label="Continue"
             borderRadius="5px"
             background="rgba(30, 80, 255, 0.1019607843)"
             padding="3px 7px"
@@ -125,7 +124,7 @@ const SignUp = () => {
             marginTop="10px"
             color="#000"
             fontSize="14px"
-          />
+          >Continue</Button>
         </WrapperForm>
       </ContainerContetnEl>
     </ContainerAuthEl>

@@ -31,7 +31,7 @@ const LiveAuctions: React.FC = () => {
         <Flex justifyContent={"space-between"} alignItems='center'>
           <H3>Live Auctions</H3>
           <NavLinkEL to="/discover">
-          <Button type="button" label='Get Started'/>
+          <Button type="button" >Get Started</Button>
           </NavLinkEL>
         </Flex>
         <Flex marginTop="56px" justifyContent='space-between'>

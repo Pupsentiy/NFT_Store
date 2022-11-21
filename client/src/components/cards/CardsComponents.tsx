@@ -23,8 +23,8 @@ type CardsProps = {
 };
 
 const CardsComponents: React.FC<CardsProps> = ({ value }) => {
-  const editBrokenAvatars: Cards[] = value.map((e) =>
-    e.avatar.includes("default-avatar") ? { ...e, avatar: noAvatar } : e
+  const editBrokenAvatars: Cards[] = value.map((img) =>
+  img.avatar.includes("default-avatar") ? { ...img, avatar: noAvatar } : img
   );
 
   return (

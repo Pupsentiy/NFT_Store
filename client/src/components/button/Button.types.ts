@@ -1,7 +1,7 @@
 export interface IButtonProps {
   onClick?: ((e:React.MouseEvent<HTMLButtonElement>) => void) | undefined;
-  label: string;
-  type: string;
+  children:string;
+  type: any;
   
   active?:boolean;
   background?: string;

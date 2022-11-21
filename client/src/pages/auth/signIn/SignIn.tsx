@@ -33,7 +33,7 @@ interface ISignInForm {
 const SignIn = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { error, isLoading } = useAppSelector((state) => state.singIn);
+  const { error, isLoading,isAuth } = useAppSelector((state) => state.singIn);
   const { userInfo,userToken } = useAppSelector((state) => state.getProfileInfo);
   const { success } = useAppSelector((state) => state.signUp);
   const {
@@ -47,14 +47,13 @@ const SignIn = () => {
   //   // redirect user to login page if registration was successful
   //   if (success) navigate('/login')
   //   // redirect authenticated user to profile screen
-  //   if (userInfo) navigate('/profile')
-  // }, [navigate, userInfo, success])
-
+  //   if (isAuth) navigate('/profile')
+  // }, [navigate, isAuth, success])
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     dispatch(loginUser(data));
-    if (userToken !== null) {
-      navigate('/profile')
-    }
+    // if (userToken) {
+    //   navigate('/profile')
+    // }
   };
 
 
@@ -106,7 +105,6 @@ const SignIn = () => {
           />
           <Button
             type="submit"
-            label="Continue"
             //styles
             borderRadius="5px"
             background="rgba(30, 80, 255, 0.1019607843)"
@@ -115,7 +113,7 @@ const SignIn = () => {
             marginTop="10px"
             color="#000"
             fontSize="14px"
-          />
+          >Continue</Button>
         </WrapperForm>
       </ContainerContetnEl>
     </ContainerAuthEl>

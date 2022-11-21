@@ -22,7 +22,6 @@ const Header: React.FC = () => {
   const { userInfo, userToken, isLoading } = useAppSelector(
     (state) => state.getProfileInfo
   );
-
   useEffect(() => {
     if (userToken) {
       dispatch(getProfile());
@@ -40,11 +39,13 @@ const Header: React.FC = () => {
           <Navigation />
           {userToken ? (
             <NavLinkEL to="/" display="none">
-              <Button type="button" label="Logout" onClick={handlelogout} />
+              <Button type="button" onClick={handlelogout}>
+                Logout
+              </Button>
             </NavLinkEL>
           ) : (
             <NavLinkEL to="/auth/signin" display="none">
-              <Button type="button" label="Sign in" />
+              <Button type="button">Sign in</Button>
             </NavLinkEL>
           )}
         </Flex>

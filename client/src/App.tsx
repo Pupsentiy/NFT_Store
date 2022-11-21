@@ -4,7 +4,7 @@ import InternalRoutes from "./routes/Routes";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <InternalRoutes />
     </BrowserRouter>
   );

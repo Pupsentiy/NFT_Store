@@ -46,14 +46,14 @@ const Category: React.FC = () => {
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                   onChangeCategory(e)
                 }
-                label={item}
+                
                 //styles
                 fontSize="12px"
                 background="#1e50ff1a"
                 padding="5px 5px"
                 width="100px"
                 height="50px"
-              />
+              >{item}</Button>
             </div>
           ))}
       </Flex>
