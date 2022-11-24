@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { IArrLinks } from "./Navigation.types";
+import { NavBarRoutes } from "../../routes/routesConfig";
 
 import {
   ContainerNavBarEl,
@@ -10,20 +10,13 @@ import {
 } from "../../styles/global.styled";
 
 const Navigation: FC = () => {
-  const arrLinks: IArrLinks[] = [
-    { to: "/", title: "Home" },
-    { to: "/discover", title: "Discover" },
-    { to: "/docs", title: "Docs" },
-    { to: "/blog", title: "Blog" },
-    { to: "/profile", title: "Contact Us/Prof" },
-  ];
   return (
     <ContainerNavBarEl>
       <NavbarEl>
-        {arrLinks &&
-          arrLinks.map((link: IArrLinks, index: number) => (
+        {NavBarRoutes &&
+          Object.values(NavBarRoutes).map(({ path, title }, index) => (
             <NavBarItemEl key={index}>
-              <NavLinkEL to={link.to}>{link.title}</NavLinkEL>
+              <NavLinkEL to={path}>{title}</NavLinkEL>
             </NavBarItemEl>
           ))}
       </NavbarEl>

@@ -11,7 +11,7 @@ async function http(path: string, config: RequestInit) {
       console.error(response.statusText);
     }
     if (response.statusText === 'Unauthorized') {
-      window.location.href = '/auth/signIn';
+      // window.location.href = '/auth/signIn';
     }
     if (response.status === 401) {
       return;

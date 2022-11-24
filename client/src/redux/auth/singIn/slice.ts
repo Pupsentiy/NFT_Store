@@ -22,7 +22,7 @@ const signInSlice = createSlice({
       state.isLoading = false;
       state.isAuth = true;
       state.error = action.payload;
-      console.log(action.payload);
+      window.location.href = '/profile'
     },
     [loginUser.rejected.type]: (state, action) => {
       state.isLoading = false;

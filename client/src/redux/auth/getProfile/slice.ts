@@ -24,6 +24,7 @@ const profileUserSlice = createSlice({
       state.isLoading = false
       state.userInfo = null
       state.error = ''
+      window.location.href = '/'
     },
   },
   extraReducers: {
@@ -34,6 +35,7 @@ const profileUserSlice = createSlice({
       state.userInfo = payload;
       state.isLoading = false
       state.error = payload
+      
     },
     [getProfile.rejected.type]: (state) => {
       state.isLoading = true

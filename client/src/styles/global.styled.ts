@@ -127,10 +127,16 @@ export const PDiscriptionEl = styled.p<{
 export const NavLinkEL = styled(NavLink)<{
   display?: string;
   textDecoration?: string;
+  alignItems?: string;
   color?: string;
   marginleft?:string;
+  fontSize?:string;
+  // before
+  activeNone?:string;
 }>`
-  font-size: 16px;
+  display:${(props) => props.display || "flex"};
+  align-items: ${(props) => props.alignItems || "left"};
+  font-size: ${props => props.fontSize || '16px'};;
   font-weight: 600;
   line-height: 133%;
   margin-left:${props => props.marginleft || '0'};
@@ -145,7 +151,7 @@ export const NavLinkEL = styled(NavLink)<{
   &.active {
     color: #ffffff;
     &::before {
-      display: ${(props) => props.display || "block"};
+      display:${(props) => props.activeNone || "block"};
       top: 20px;
       left: 0;
       position: absolute;
@@ -240,7 +246,8 @@ export const WrapperImg = styled.picture<{ width?: string; height?: string }>`
 
 export const Img = styled.img<{ borderRadius?: string; width?: string }>`
   border-radius: ${(props) => props.borderRadius || "8px"};
-  width: ${(props) => props.width || "auto"};
+  width: 100%;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

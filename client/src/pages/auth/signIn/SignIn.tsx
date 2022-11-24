@@ -1,15 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect } from "react";
-import styled from "styled-components";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginUser } from "../../../redux/auth/singIn/asyncActions";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { signIn } from "../../../utils/validation";
-
-import { getProfile } from "../../../redux/auth/getProfile/asyncActions";
-import { Link, useNavigate } from "react-router-dom";
-import { authorizationHeaders } from "../../../api/fetchWrappers";
 
 import Loader from "../../../components/loader/Loader";
 import Logo from "../../../components/logo/Logo";
@@ -32,9 +26,8 @@ interface ISignInForm {
 
 const SignIn = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { error, isLoading,isAuth } = useAppSelector((state) => state.singIn);
-  const { userInfo,userToken } = useAppSelector((state) => state.getProfileInfo);
+  const { userInfo} = useAppSelector((state) => state.getProfileInfo);
   const { success } = useAppSelector((state) => state.signUp);
   const {
     register,
@@ -43,21 +36,11 @@ const SignIn = () => {
     reset,
   } = useForm<ISignInForm>({ resolver: yupResolver(signIn), mode: "onBlur" });
 
-  // useEffect(() => {
-  //   // redirect user to login page if registration was successful
-  //   if (success) navigate('/login')
-  //   // redirect authenticated user to profile screen
-  //   if (isAuth) navigate('/profile')
-  // }, [navigate, isAuth, success])
-  const onSubmit: SubmitHandler<ISignInForm> = (data) => {
-    dispatch(loginUser(data));
-    // if (userToken) {
-    //   navigate('/profile')
-    // }
+  const submit: SubmitHandler<ISignInForm> = (data) => {
+     dispatch(loginUser(data));
+    reset()
   };
 
-
-    
   
 
   return (
@@ -76,7 +59,7 @@ const SignIn = () => {
             create an account
           </NavLinkEL>
         </PDiscriptionEl>
-        <WrapperForm onSubmit={handleSubmit(onSubmit)}>
+        <WrapperForm onSubmit={handleSubmit(submit)} >
           <Input
             label="Email"
             type="email"

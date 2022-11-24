@@ -8,7 +8,7 @@ import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 
 import { ContainerEl, Flex, H2, H3, H6, Img } from "../../styles/global.styled";
 
-import noFoto from "../../assets/img/noFoto.png";
+import avatarDefault from "../../assets/img/noFoto.png";
 import camera from "../../assets/icons/photo_camera_white_24dp.png";
 
 export const BlockAvatar = styled.div`
@@ -51,9 +51,8 @@ const Profile = () => {
         <BlockAvatar>
           <WrapperAvatar>
             <Img
-              src={!userInfo?.avatar ? noFoto : userInfo?.avatar}
+              src={!userInfo?.avatar ? avatarDefault : userInfo?.avatar}
               alt="avatar"
-              className="avatar"
             />
             <ButtonLoadImg htmlFor="img">
               <img src={camera} alt="loadButton" />

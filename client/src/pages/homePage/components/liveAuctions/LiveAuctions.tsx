@@ -13,6 +13,7 @@ import {
   NavLinkEL,
   SectionEl,
 } from "../../../../styles/global.styled";
+import { routesConfig } from "../../../../routes/routesConfig";
 
 const LiveAuctions: React.FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
@@ -28,13 +29,13 @@ const LiveAuctions: React.FC = () => {
     <SectionEl>
       <BackgroundImgOrnametStyle top={"49%"} left={"-24%"} />
       <ContainerEl>
-        <Flex justifyContent={"space-between"} alignItems='center'>
+        <Flex justifyContent={"space-between"} alignItems="center">
           <H3>Live Auctions</H3>
-          <NavLinkEL to="/discover">
-          <Button type="button" >Get Started</Button>
+          <NavLinkEL to={routesConfig.discover.path}>
+            <Button type="button">Get Started</Button>
           </NavLinkEL>
         </Flex>
-        <Flex marginTop="56px" justifyContent='space-between'>
+        <Flex marginTop="56px" justifyContent="space-between">
           {status === "loading" ? (
             sceletonsCards
           ) : (

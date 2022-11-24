@@ -17,6 +17,7 @@ import {
   WrapperImg,
 } from "../../../../styles/global.styled";
 import linkup from "../../../../assets/icons/discover_logo/linkup.svg";
+import { routesConfig } from "../../../../routes/routesConfig";
 
 export const TitleEl = styled.title`
   display: flex;
@@ -51,9 +52,15 @@ const BlockTitle: React.FC = () => {
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint. Velit officia consequat duis enim velit mollit. Exercitation
             veniam consequat sunt nostrud amet.
-            <NavLinkEL to="#" display={"none"}>
+            <NavLinkEL
+              to={routesConfig.discover.path}
+              display={"flex"}
+              color="#fff"
+            >
               Get Started
-              <Img src={linkup} alt="img" />
+              <WrapperImg width="20px" height="20px">
+                <Img src={linkup} alt="img" />
+              </WrapperImg>
             </NavLinkEL>
           </PDiscriptionEl>
         </TitleEl>
@@ -63,23 +70,24 @@ const BlockTitle: React.FC = () => {
           ? sceletons
           : picture &&
             picture.map((pic: Cards, i: number) => (
-              <WrapperImg key={i} width={'400px'} height={'400px'}>
+              <WrapperImg key={i} width={"400px"} height={"400px"}>
                 <Img src={pic.img} alt="card" />
               </WrapperImg>
             ))}
       </WrapperCardsEl>
       <SectionEl>
-        <Flex justifyContent={'space-evenly'} alignItems={'center'}>
+        <Flex justifyContent={"space-evenly"} alignItems={"center"}>
           {platforms &&
             platforms.map((platform: Platforms, i: number) => (
               <Link rel="noreferrer" target="_blank" to={platform.site} key={i}>
-                <Img
-                  className="blockchain__link-logo"
-                  src={platform.logo}
-                  alt={platform.alt}
-                  borderRadius={"none"}
-                  width={"200px"}
-                />
+                <WrapperImg width="200px">
+                  <Img
+                    className="blockchain__link-logo"
+                    src={platform.logo}
+                    alt={platform.alt}
+                    borderRadius={"none"}
+                  />
+                </WrapperImg>
               </Link>
             ))}
         </Flex>
