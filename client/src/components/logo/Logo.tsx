@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import pandaLogo from "../../assets/icons/pandaLogo.svg";
-import { Flex, LogoEl, PDiscriptionEl } from "../../styles/global.styled";
+import { Flex, LogoEl, PDiscriptionEl } from "../../assets/styles/global.styled";
 import { ILogoProps } from "./Logo.types";
 
 const Logo: FC<ILogoProps> = ({ handlerScrollUp, flexDirection,color,justifyContent}) => {

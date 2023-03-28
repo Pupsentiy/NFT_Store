@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import { store } from "./redux/store";
-import { GlobalStyle } from "./styles/global.styled";
+import { GlobalStyle } from "./assets/styles/global.styled";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

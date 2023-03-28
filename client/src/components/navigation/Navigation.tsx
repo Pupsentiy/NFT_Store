@@ -7,7 +7,7 @@ import {
   NavbarEl,
   NavBarItemEl,
   NavLinkEL,
-} from "../../styles/global.styled";
+} from "../../assets/styles/global.styled";
 
 const Navigation: FC = () => {
   return (

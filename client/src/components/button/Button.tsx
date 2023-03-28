@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useAppSelector } from "../../redux/store";
 
 import { ButtonEl } from "./Button.styled";
 import { IButtonProps } from "./Button.types";

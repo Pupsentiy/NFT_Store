@@ -6,11 +6,12 @@ import Category from "../../components/category/Category";
 import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
 
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+
 import { fetchItems } from "../../redux/cards/asyncActions";
 import { setCurrentPage } from "../../redux/filter/filterSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
 
-import { ContainerEl, Flex, H3 } from "../../styles/global.styled";
+import { ContainerEl, Flex, H3 } from "../../assets/styles/global.styled";
 
 export const GridEl = styled.div`
 margin-top:60px;
@@ -59,7 +60,7 @@ const Discover = () => {
         </Flex>
         <Category />
         <GridEl >
-          <CardsComponents value={items} />
+          <CardsComponents cards={items} />
         </GridEl>
         <Pagination currentPage={currentPage} onChangePage={onChangePage} />
       </ContainerEl>

@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { TypedUseSelectorHook, useDispatch } from "react-redux";
+
 import signUp from './auth/signUp/slice'
 import singIn from './auth/singIn/slice'
 import card from "./cards/slice";
@@ -17,10 +16,6 @@ export const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
 
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-type AppDispatch = typeof store.dispatch;
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();

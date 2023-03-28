@@ -2,13 +2,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginUser } from "../../../redux/auth/singIn/asyncActions";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { signIn } from "../../../utils/validation";
+import { signIn } from "../../../utils/helpers/validation.helpers";
 
-import Loader from "../../../components/loader/Loader";
 import Logo from "../../../components/logo/Logo";
 import Input from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
+
+import {useAppDispatch, useAppSelector} from "../../../hooks/hooks";
 
 import {
   ContainerAuthEl,
@@ -17,9 +17,9 @@ import {
   NavLinkEL,
   PDiscriptionEl,
   WrapperForm,
-} from "../../../styles/global.styled";
+} from "../../../assets/styles/global.styled";
 
-interface ISignInForm {
+export interface ISignInForm {
   email: string;
   password: string;
 }

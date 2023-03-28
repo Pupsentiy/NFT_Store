@@ -1,7 +1,7 @@
 import Discover from "../pages/discoverPage/Discover";
 import Home from "../pages/homePage/Home";
 import NotFound from "../pages/notFoundPage/NotFound";
-import Profile from "../pages/profilePage/Profile";
+import ProfilePage from "../pages/profilePage/ProfilePage";
 import SignIn from "../pages/auth/signIn/SignIn";
 import SignUp from "../pages/auth/signUp/SignUp";
 
@@ -47,7 +47,7 @@ export const routesConfig: TRoutesConfig = {
   profile: {
     title:'profile',
     path: "profile",
-    component: Profile,
+    component: ProfilePage,
   },
 };
 
@@ -65,17 +65,17 @@ export const NavBarRoutes:TRoutesConfig = {
   docs: {
     title: "Docs",
     path: "docs",
-    component: Profile,
+    component: ProfilePage,
   },
   blog: {
     title: "Blog",
     path: "blog",
-    component: Profile,
+    component: ProfilePage,
   },
   profile: {
     title:'Contacts',
     path: "contacts",
-    component: Profile,
+    component: ProfilePage,
   },
 };
 

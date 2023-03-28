@@ -10,7 +10,7 @@ export function fontFace(
   return `
     @font-face{
         font-family: "${name}";
-             url(${require("../assets/fonts/" +
+             url(${require("../fonts/" +
                src +
                ".ttf")}) format("truetype"),
         font-style: ${fontStyle};

@@ -9,7 +9,7 @@ import {
   Img,
   PDiscriptionEl,
   WrapperImg,
-} from "../../styles/global.styled";
+} from "../../assets/styles/global.styled";
 import {
   BlockCardName,
   CardContainer,
@@ -19,11 +19,12 @@ import {
 } from "./CardsComponents.styled";
 
 type CardsProps = {
-  value: Cards[];
+  cards: Cards[];
 };
 
-const CardsComponents: React.FC<CardsProps> = ({ value }) => {
-  const editBrokenAvatars: Cards[] = value.map((img) =>
+const CardsComponents: React.FC<CardsProps> = ({ cards }) => {
+
+  const editBrokenAvatars: Cards[] = cards.map((img) =>
   img.avatar.includes("default-avatar") ? { ...img, avatar: noAvatar } : img
   );
 

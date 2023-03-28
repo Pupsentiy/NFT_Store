@@ -4,7 +4,7 @@
 - **React**
 - **TypeScript**
 - **Redux-Toolkit**
-- **SASS**
+- **Styled Components**
 
 ## 🔥 Backend: 
 - **NodeJs**

@@ -2,9 +2,9 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useAppDispatch } from "../../../redux/store";
+import {useAppDispatch} from "../../../hooks/hooks";
 import { registerUser } from "../../../redux/auth/signUp/asyncActions";
-import { signUpShema } from "../../../utils/validation";
+import { signUpShema } from "../../../utils/helpers/validation.helpers";
 
 import Logo from "../../../components/logo/Logo";
 import Input from "../../../components/input/Input";
@@ -17,7 +17,7 @@ import {
   NavLinkEL,
   PDiscriptionEl,
   WrapperForm,
-} from "../../../styles/global.styled";
+} from "../../../assets/styles/global.styled";
 
 
 interface ISignUpForm {

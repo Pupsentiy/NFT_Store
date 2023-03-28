@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { useAppSelector } from "../../../../redux/store";
 import { Cards } from "../../../../redux/cards/types";
 import { Platforms, platforms } from "../../../../mockDate/mockPlatforms";
 import { SceletonPicture } from "./SceletonPicture";
@@ -15,9 +14,11 @@ import {
   PDiscriptionEl,
   SectionEl,
   WrapperImg,
-} from "../../../../styles/global.styled";
+} from "../../../../assets/styles/global.styled";
 import linkup from "../../../../assets/icons/discover_logo/linkup.svg";
 import { routesConfig } from "../../../../routes/routesConfig";
+import {FC} from "react";
+import {useAppSelector} from "../../../../hooks/hooks";
 
 export const TitleEl = styled.title`
   display: flex;
@@ -31,7 +32,8 @@ export const WrapperCardsEl = styled.article`
   padding: 0 30px;
 `;
 
-const BlockTitle: React.FC = () => {
+const BlockTitle: 
+    FC = () => {
   const { items, status } = useAppSelector((state) => state.card);
   const picture: Cards[] = items
     .map((e) => e)

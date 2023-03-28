@@ -10,7 +10,7 @@ import {
   Flex,
   H5,
   PDiscriptionEl,
-} from "../../styles/global.styled";
+} from "../../assets/styles/global.styled";
 import { BlockSoical, FooterEl, WrapperAboutUs } from "./Footer.styled";
 
 import { IArrSocial } from "./Footer.types";

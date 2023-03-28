@@ -1,15 +1,13 @@
 import React, { useCallback, useRef, useState } from "react";
 import debounce from "lodash.debounce";
-import styled from "styled-components";
 
-import { useAppDispatch } from "../../redux/store";
 import { setCurrentPage, setSearchValue } from "../../redux/filter/filterSlice";
 import Input from "../input/Input";
+import {useAppDispatch} from "../../hooks/hooks";
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
-  // const inputRef = useRef<HTMLInputElement>(null);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);

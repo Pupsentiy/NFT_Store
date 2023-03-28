@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { setSort } from "../../redux/filter/filterSlice";
-import { SortPropertyEnum } from "../../redux/filter/types";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+import {sortList} from "../../utils/constants/constants";
+
 
 import arrow from "../../assets/icons/discover_logo/arrow.svg";
 import {
@@ -14,12 +15,7 @@ import {
 } from "./Sort.styled";
 import { PopupClick, SortItem } from "./Sort.types";
 
-const sortList: SortItem[] = [
-  { name: "price (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
-  { name: "price (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
-  { name: "alphabetically (DESC)", sortProperty: SortPropertyEnum.NAME_DESC },
-  { name: "alphabetically (ASC)", sortProperty: SortPropertyEnum.NAME_ASC },
-];
+
 
 const Sort: React.FC = () => {
   const dispatch = useAppDispatch();

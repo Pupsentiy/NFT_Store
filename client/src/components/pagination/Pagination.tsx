@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Flex } from "../../styles/global.styled";
+import { Flex } from "../../assets/styles/global.styled";
 import { StyledReactPaginate } from "./Pagination.styled";
 
 import { PaginationProps } from "./Pagination.types";

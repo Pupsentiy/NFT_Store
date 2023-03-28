@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { arrItem } from "../../../../utils/constants/constants";
+
 import logo from "../../../../assets/icons/create_nft/blockLogo.svg";
 import {
   ContainerEl,
@@ -9,7 +11,7 @@ import {
   H5,
   PDiscriptionEl,
   SectionEl,
-} from "../../../../styles/global.styled";
+} from "../../../../assets/styles/global.styled";
 
 export const WrapperButton = styled.div`
   border: solid 1px #272d37;
@@ -45,23 +47,7 @@ export interface IArrItem {
   text: string;
 }
 const CreateNft: React.FC = () => {
-  const arrItem: IArrItem[] = [
-    {
-      logo: logo,
-      title: "Set up your wallet",
-      text: "Once you’ve set up your wallet of choice, connect it to OpenSea by clicking the wallet icon in the top right corner.",
-    },
-    {
-      logo: logo,
-      title: "Add your NFTs",
-      text: "Once you’ve set up your wallet of choice, connect it to OpenSea by clicking the wallet icon in the top right corner.",
-    },
-    {
-      logo: logo,
-      title: "List them for sale",
-      text: "Once you’ve set up your wallet of choice, connect it to OpenSea by clicking the wallet icon in the top right corner.",
-    },
-  ];
+
 
   return (
     <SectionEl>

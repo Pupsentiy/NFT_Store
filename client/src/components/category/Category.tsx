@@ -1,17 +1,18 @@
 import React, { useCallback, useState } from "react";
-import styled from "styled-components";
+
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
 import { setCategoryInnerHtml } from "../../redux/filter/filterSlice";
-import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 
 import Sort from "../sort/Sort";
 import Button from "../button/Button";
 
-import { Flex } from "../../styles/global.styled";
+import { Flex } from "../../assets/styles/global.styled";
+
 
 const Category: React.FC = () => {
   const { categoryFilter } = useAppSelector(
-    (state: RootState) => state.filters
+    (state) => state.filters
   );
   const dispatch = useAppDispatch();
 

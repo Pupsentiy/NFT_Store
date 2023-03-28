@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import {FC, useEffect} from "react";
 import { FiLogOut } from "react-icons/fi";
 
-import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getProfile } from "../../redux/auth/getProfile/asyncActions";
 import { setLogout } from "../../redux/auth/getProfile/slice";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
 import Logo from "../logo/Logo";
 import Navigation from "../navigation/Navigation";
@@ -12,19 +12,16 @@ import Button from "../button/Button";
 import {
   ContainerEl,
   Flex,
-  H5,
   HeaderEl,
   Img,
   NavLinkEL,
   PDiscriptionEl,
   WrapperImg,
-} from "../../styles/global.styled";
+} from "../../assets/styles/global.styled";
 import { routesConfig } from "../../routes/routesConfig";
-import styled from "styled-components";
-import { WrapperAvatar } from "../../pages/profilePage/Profile";
 import avatarDefault from "../../assets/img/noFoto.png";
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   const dispatch = useAppDispatch();
   const { isAuth } = useAppSelector((state) => state.singIn);
   const { userInfo, userToken, isLoading } = useAppSelector(

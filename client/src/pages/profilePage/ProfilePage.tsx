@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import Chart from "../../components/chart/Chart";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { getProfile } from "../../redux/auth/getProfile/asyncActions";
-
-import { ContainerEl, Flex, H2, H3, H6, Img } from "../../styles/global.styled";
+import { ContainerEl, Flex, H3, Img } from "../../assets/styles/global.styled";
 
 import avatarDefault from "../../assets/img/noFoto.png";
 import camera from "../../assets/icons/photo_camera_white_24dp.png";
@@ -39,7 +36,7 @@ export const WrapperAvatar = styled.picture`
   position: relative;
 `;
 
-const Profile = () => {
+const ProfilePage = () => {
   const { userInfo, isLoading } = useAppSelector(
     (state) => state.getProfileInfo
   );
@@ -69,4 +66,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
