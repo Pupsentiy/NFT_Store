@@ -44,6 +44,7 @@ class UserController {
       return next(ApiError.internal("Указан неверный пароль"));
     }
     const token = generateJwt(user.id, user.email);
+    console.log(token,'tokken-back')
     return res.json({ token });
   }
 
@@ -56,7 +57,6 @@ class UserController {
 
   async getUserProfile(req, res, next) {
     const user = await User.findOne(req.user);
-
     if (user) {
       return res.json({
         id: user.id,
