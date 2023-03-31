@@ -1,4 +1,3 @@
-// userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getProfile } from "./asyncActions";
@@ -27,21 +26,21 @@ const profileUserSlice = createSlice({
       window.location.href = '/'
     },
   },
-  extraReducers: {
-    [getProfile.pending.type]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(getProfile.pending,(state) => {
       state.isLoading = true
-    },
-    [getProfile.fulfilled.type]: (state, {payload}) => {
+    })
+    builder.addCase(getProfile.fulfilled,(state,{payload}) => {
       state.userInfo = payload;
       state.isLoading = false
       state.error = payload
-      
-    },
-    [getProfile.rejected.type]: (state) => {
+      console.log(userToken)
+    })
+    builder.addCase(getProfile.rejected,(state) => {
       state.isLoading = true
-    },
+    })
   },
-});
-export const { setLogout } = profileUserSlice.actions;
+})
 
+export const { setLogout } = profileUserSlice.actions;
 export default profileUserSlice.reducer;

@@ -127,15 +127,17 @@ export const PDiscriptionEl = styled.p<{
 export const NavLinkEL = styled(NavLink)<{
   display?: string;
   textDecoration?: string;
-  alignItems?: string;
+  flexdirection?:string;
+  alignitems?: string;
   color?: string;
   marginleft?:string;
   fontSize?:string;
   // before
-  activeNone?:string;
+  beforedisplay?:string;
 }>`
   display:${(props) => props.display || "flex"};
-  align-items: ${(props) => props.alignItems || "left"};
+  align-items: ${(props) => props.alignitems || "left"};
+  flex-direction:${(props) => props.flexdirection || 'row'};
   font-size: ${props => props.fontSize || '16px'};;
   font-weight: 600;
   line-height: 133%;
@@ -151,7 +153,7 @@ export const NavLinkEL = styled(NavLink)<{
   &.active {
     color: #ffffff;
     &::before {
-      display:${(props) => props.activeNone || "block"};
+      display:${(props) => props.beforedisplay || "block"};
       top: 20px;
       left: 0;
       position: absolute;

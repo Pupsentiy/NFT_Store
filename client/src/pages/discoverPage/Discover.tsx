@@ -23,7 +23,7 @@ grid-gap: 0.7vw;
 
 const Discover = () => {
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector((state) => state.card);
+  const { items } = useAppSelector((state) => state.cards);
   const { categoryFilter, currentPage, searchValue, sort } = useAppSelector(
     (state) => state.filters
   );

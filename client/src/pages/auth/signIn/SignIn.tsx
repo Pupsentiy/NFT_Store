@@ -93,7 +93,7 @@ const SignIn = () => {
             background="rgba(30, 80, 255, 0.1019607843)"
             padding="3px 7px"
             boxShadow="0px 0px 6px 2px rgb(30 80 255 / 71%)"
-            marginTop="10px"
+            margin="10px 0 0 0"
             color="#000"
             fontSize="14px"
           >Continue</Button>

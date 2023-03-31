@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 
 import { ButtonEl } from "./Button.styled";
 import { IButtonProps } from "./Button.types";
@@ -11,11 +11,12 @@ const Button: FC<IButtonProps> = (props) => {
       active={props.active}
       type={props.type}
       //styles
+      display={props.display}
       background={props.background}
       borderRadius={props.borderRadius}
       padding={props.padding}
       boxShadow={props.boxShadow}
-      marginTop={props.marginTop}
+      margin={props.margin}
       color={props.color}
       fontSize={props.fontSize}
       width={props.width}

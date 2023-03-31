@@ -3,36 +3,35 @@ import { fetchItems } from "./asyncActions";
 import { Cards, CardsSliceState, Status } from "./types";
 
 const initialState: CardsSliceState = {
-  items: [],
-  status: Status.LOADING,
+  items: [] as Cards[],
+  status: Status.LOADING, // loading | success | error
 };
 
 const cardsSlice = createSlice({
-  name: "card",
+  name: "cards",
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<Cards[]>) {
-      state.items = action.payload;
-    },
+    // setItems(state, action: PayloadAction<Cards[]>) {
+    //   state.items = action.payload;
+    // },
   },
-  extraReducers: {
-    [fetchItems.pending.type]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchItems.pending,(state) => {
       state.status = Status.LOADING;
       state.items = [];
-    },
-
-    [fetchItems.fulfilled.type]: (state, action) => {
-      state.items = action.payload;
+    })
+    builder.addCase(fetchItems.fulfilled,(state,action) =>  {
+      state.items = action.payload
       state.status = Status.SUCCESS;
-    },
-
-    [fetchItems.rejected.type]: (state) => {
+    })
+    builder.addCase(fetchItems.rejected,(state) => {
       state.status = Status.ERROR;
       state.items = [];
-    },
+    })
   },
+
 });
 
-export const { setItems } = cardsSlice.actions;
+// export const { setItems } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

@@ -32,38 +32,38 @@ const Header: FC = () => {
     if (userToken) {
       dispatch(getProfile());
     }
-  }, []);
+  }, [dispatch, userToken]);
 
   const handlelogout = () => {
     dispatch(setLogout());
   };
-
+console.log(userToken)
   return (
     <HeaderEl>
       <ContainerEl>
         <Flex alignItems="center" justifyContent="space-between">
           <Logo />
           <Navigation />
-          {userToken ? (
+          {userToken !== null ? (
             <Flex alignItems="center">
-              <NavLinkEL to={routesConfig.profile.path} alignItems='center' activeNone="none">
+              <NavLinkEL to={routesConfig.profile.path} beforedisplay='none' alignitems="center" flexdirection="column" >
               <WrapperImg width="50px" height="50px">
                 <Img
                   src={!userInfo?.avatar ? avatarDefault : userInfo?.avatar}
                   alt="user foto"
                 />
               </WrapperImg>
-              <PDiscriptionEl fontSize="14px" fontWeight="600" marginLeft="10px">
+              <PDiscriptionEl fontSize="14px" fontWeight="600"  lineHeight="normal">
                 {userInfo?.firstName}
               </PDiscriptionEl>
               </NavLinkEL>
               <NavLinkEL
                 to={routesConfig.home.path}
                 onClick={handlelogout}
-                marginleft="10px"
-                activeNone="none"
+                marginleft="30px"
                 fontSize="25px"
                 color="#fff"
+                beforedisplay='none'
               >
                 <FiLogOut />
               </NavLinkEL>

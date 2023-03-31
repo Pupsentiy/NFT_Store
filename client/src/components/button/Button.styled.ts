@@ -5,16 +5,18 @@ export const ButtonEl = styled.button<{
   background?: string;
   padding?: string;
   boxShadow?: string;
-  marginTop?: string;
+  margin?: string;
   color?: string;
   fontSize?: string;
   width?:string;
   height?:string;
   active?:boolean;
+  display?:string
 }>`
+  display:${props => props.display || 'block'};
   width:${props => props.width || 'auto'};
   height:${props => props.height || 'auto'};
-  margin-top: ${(props) => props.marginTop || "0"};
+  margin: ${(props) => props.margin || "0"};
   border-radius: ${(props) => props.borderRadius || "8px"};
   border: solid 1px #1e50ff;
   padding: ${(props) => props.padding || "16px 60.5px"};

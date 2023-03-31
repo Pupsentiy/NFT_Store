@@ -1,39 +1,31 @@
-import React, { useCallback, useState } from "react";
+import { FC, useCallback } from "react";
 
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 
-import { setCategoryInnerHtml } from "../../redux/filter/filterSlice";
+import { setCategoryInnerHtml, setCurrentPage } from "../../redux/filter/filterSlice";
 
 import Sort from "../sort/Sort";
 import Button from "../button/Button";
 
+import { categories } from "../../utils/constants/constants";
+
 import { Flex } from "../../assets/styles/global.styled";
 
-
-const Category: React.FC = () => {
+const Category: FC = () => {
+  const dispatch = useAppDispatch();
   const { categoryFilter } = useAppSelector(
     (state) => state.filters
   );
-  const dispatch = useAppDispatch();
-
-  const categories: string[] = [
-    "All",
-    "Premium",
-    "Art",
-    "Sports",
-    "Entertainment",
-    "Gaming",
-    "Collectibles",
-    "NFT for Good",
-  ];
 
   const onChangeCategory = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       const cat = (e.target as HTMLButtonElement).innerHTML;
       dispatch(setCategoryInnerHtml(cat));
+      dispatch(setCurrentPage(1))
     },
-    [categoryFilter]
+    [dispatch]
   );
+  
   return (
     <Flex marginTop={"50px"}>
       <Sort />

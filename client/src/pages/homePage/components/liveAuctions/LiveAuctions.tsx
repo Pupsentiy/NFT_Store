@@ -20,7 +20,7 @@ import {
 
 
 const LiveAuctions: FC = () => {
-  const { items, status } = useAppSelector((state) => state.card);
+  const { items, status } = useAppSelector((state) => state.cards);
 
   const cards: Cards[] = items
       .map((e) => e)

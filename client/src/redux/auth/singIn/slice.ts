@@ -1,4 +1,3 @@
-// userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 import { loginUser } from "./asyncActions";
@@ -14,19 +13,20 @@ const signInSlice = createSlice({
   name: "signIn",
   initialState,
   reducers: {},
-  extraReducers: {
-    [loginUser.pending.type]: (state) => {
-      state.isLoading = true;
-    },
-    [loginUser.fulfilled.type]: (state, action) => {
+
+  extraReducers: (builder) => {
+    builder.addCase(loginUser.pending,(state) => {
+      state.isLoading = true
+    })
+    builder.addCase(loginUser.fulfilled,(state,{payload}) => {
       state.isLoading = false;
       state.isAuth = true;
-      state.error = action.payload;
+      state.error = payload;
       window.location.href = '/profile'
-    },
-    [loginUser.rejected.type]: (state, action) => {
-      state.isLoading = false;
-    },
+    })
+    builder.addCase(loginUser.rejected,(state) => {
+      state.isLoading = true
+    })
   },
 });
 

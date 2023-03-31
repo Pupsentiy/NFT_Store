@@ -34,7 +34,7 @@ export const WrapperCardsEl = styled.article`
 
 const BlockTitle: 
     FC = () => {
-  const { items, status } = useAppSelector((state) => state.card);
+  const { items, status } = useAppSelector((state) => state.cards);
   const picture: Cards[] = items
     .map((e) => e)
     .sort(() => Math.random() - 0.5)

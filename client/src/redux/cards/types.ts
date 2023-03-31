@@ -1,9 +1,3 @@
-export enum Status {
-  LOADING = "loading",
-  SUCCESS = "completed",
-  ERROR = "error",
-}
-
 export type Cards = {
   id: number;
   name: string;
@@ -14,9 +8,10 @@ export type Cards = {
   category:string;
 };
 
-export interface CardsSliceState {
-  items: Cards[];
-  status: Status;
+export enum Status {
+  LOADING = "loading",
+  SUCCESS = "completed",
+  ERROR = "error",
 }
 
 export type SearchCardsParams = {
@@ -25,4 +20,9 @@ export type SearchCardsParams = {
   search:string;
   order:string;
   sortBy:string;
+}
+
+export interface CardsSliceState {
+  items: Cards[];
+  status: Status;
 }

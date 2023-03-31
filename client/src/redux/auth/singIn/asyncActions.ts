@@ -9,6 +9,7 @@ export const loginUser = createAsyncThunk(
   async (data:signInUser, { rejectWithValue }) => {
     try {
       const response:any = await authQuery(data,`${API.signInPath}`);
+      console.log(response)
       localStorage.setItem('accessToken', response.token)
       return response;
     } catch (e:any) {

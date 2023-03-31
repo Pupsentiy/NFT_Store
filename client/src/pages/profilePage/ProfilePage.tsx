@@ -41,7 +41,7 @@ const ProfilePage = () => {
     (state) => state.getProfileInfo
   );
   const dispatch = useAppDispatch();
-
+    console.log(userInfo)
   return (
     <ContainerEl>
       <Flex marginTop='50px'>

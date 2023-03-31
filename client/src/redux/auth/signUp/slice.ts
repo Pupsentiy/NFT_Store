@@ -1,4 +1,3 @@
-// userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 import { registerUser } from "./asyncActions";
@@ -14,20 +13,20 @@ const signUpSlice = createSlice({
   name: "signUp",
   initialState,
   reducers: {},
-  extraReducers: {
-    [registerUser.pending.type]: (state) => {
-      state.isLoading = true;
-    },
-    [registerUser.fulfilled.type]: (state, action) => {
-      // state.currentUser = action.payload;
-      state.error = action.payload;
+
+  extraReducers: (builder) => {
+    builder.addCase(registerUser.pending,(state) => {
+      state.isLoading = true
+    })
+    builder.addCase(registerUser.fulfilled,(state,{payload}) => {
+      // state.error = payload; приходит не стринг
       state.success = true;
+      window.location.href = '/auth/signin'
       state.isLoading = false;
-      // console.log(action,'fulfiled')
-    },
-    [registerUser.rejected.type]: (state, action) => {
-      state.isLoading = false;
-    },
+    })
+    builder.addCase(registerUser.rejected,(state) => {
+      state.isLoading = true
+    })
   },
 });
 

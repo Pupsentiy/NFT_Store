@@ -17,15 +17,15 @@ import {
   WrapperAvatar,
   WrapperCat,
 } from "./CardsComponents.styled";
+import Button from "../button/Button";
 
 type CardsProps = {
   cards: Cards[];
 };
 
 const CardsComponents: React.FC<CardsProps> = ({ cards }) => {
-
   const editBrokenAvatars: Cards[] = cards.map((img) =>
-  img.avatar.includes("default-avatar") ? { ...img, avatar: noAvatar } : img
+    img.avatar.includes("default-avatar") ? { ...img, avatar: noAvatar } : img
   );
 
   return (
@@ -58,7 +58,7 @@ const CardsComponents: React.FC<CardsProps> = ({ cards }) => {
                     </PDiscriptionEl>
                   </WrapperCat>
                   <WrapperAvatar>
-                    <Img src={item.avatar} alt={`avatar ${item.author}`} />
+                    <Img src={item.avatar} alt={`avatar: ${item.author}`} />
                   </WrapperAvatar>
                 </Flex>
                 <Flex flexDirection={"column"}>
@@ -68,6 +68,15 @@ const CardsComponents: React.FC<CardsProps> = ({ cards }) => {
                   <PriceEl>{item.price.toLocaleString()} $</PriceEl>
                 </Flex>
               </Flex>
+              <Button
+                type="button"
+                width="100%"
+                background="#1E50FF"
+                boxShadow="8px 8px 18px rgba(30, 80, 255, 0.25)"
+                margin="20px 0 0 0"
+              >
+                Buy
+              </Button>
             </Flex>
           </CardContainer>
         ))}
